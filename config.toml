@@ -6,6 +6,7 @@ title = "Nishchal Bhandari"
 theme = "gokarna"
 enableEmoji = true
 pygmentsStyle = "monokai"
+publishDir = "docs"
 
 [markup]
   [markup.tableOfContents]

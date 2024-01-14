@@ -6,7 +6,18 @@
     <description>Recent content on Nishchal Bhandari</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jan 2024 12:10:53 -0600</lastBuildDate><atom:link href="https://nishchalb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://nishchalb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Darktable: Recreate this look #1</title>
+      <link>https://nishchalb.github.io/posts/dt-recreate1/</link>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://nishchalb.github.io/posts/dt-recreate1/</guid>
+      <description>A while ago, someone asked online how to recreate the look of sanghan. Here is my attempt at showing how to do this using darktable 3.6.
+Here is the end product of the edit. I found this image on Signature Edits
+Here is our starting point. Notice that the conditions are similar to the images we are using as inspiration. It&amp;rsquo;s a lot easier to achieve a look when your lighting conditions are close.</description>
+    </item>
+    
     <item>
       <title>img-ditto</title>
       <link>https://nishchalb.github.io/projects/imgditto/</link>
