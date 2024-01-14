@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Nishchal Bhandari</title>
+    <link>https://nishchalb.github.io/projects/</link>
+    <description>Recent content in Projects on Nishchal Bhandari</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 13 Jan 2024 12:10:53 -0600</lastBuildDate><atom:link href="https://nishchalb.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>img-ditto</title>
+      <link>https://nishchalb.github.io/projects/imgditto/</link>
+      <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
+      
+      <guid>https://nishchalb.github.io/projects/imgditto/</guid>
+      <description>Project Page
+Concept img-ditto is a small python script with a command line interface that allows you to transfer the color style from one image to another. It works by using the histogram matching technique on the channels of an image. Typically the technique is used to equalize the intensity of an image to improve contrast, but I&amp;rsquo;ve found that the method works decently well for color transfer as well.</description>
+    </item>
+    
+    <item>
+      <title>Plane-Based Depth Image Completion</title>
+      <link>https://nishchalb.github.io/projects/depth_completion/</link>
+      <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
+      
+      <guid>https://nishchalb.github.io/projects/depth_completion/</guid>
+      <description>Abstract The Kinect has encountered widespread use in the areas of 3D mapping and computer vision thanks to its low cost, portability, and depth sensing capability. Unfortunately, its depth sensor has a maximum range of eight meters, and past four meters it tends to be very noisy. This work presents an approach to augment the Kinect with the ability to estimate the data that is missing from its sensors, providing a more complete picture of what is present in a given scene.</description>
+    </item>
+    
+    <item>
+      <title>Secret Wizard Corporation</title>
+      <link>https://nishchalb.github.io/projects/swc/</link>
+      <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
+      
+      <guid>https://nishchalb.github.io/projects/swc/</guid>
+      <description>Project Page
+Concept Secret Wizard Corporation is a small prototype game designed and created in two weeks by Nishchal Bhandari, Isaac Rosado, Pravina Saratunga, and Rachel Thornton for the MIT class CMS.611/6.073 Creating Video Games. The game is designed as a flow puzzle game with the addition of magical powers to help when players get stuck. To be successful, players must balance their actions between traditional pipe rotations and magical abilities.</description>
+    </item>
+    
+    <item>
+      <title>walltime</title>
+      <link>https://nishchalb.github.io/projects/walltime/</link>
+      <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
+      
+      <guid>https://nishchalb.github.io/projects/walltime/</guid>
+      <description>Project Page
+Concept walltime is a small python script with a command line interface that can set the desktop wallpaper to an image based on the time of day. walltime chooses an image semi-randomly that fits with the time of day. walltime works by mapping the 24 hour clock to a color gradient (currently the viridis colormap in Matplotlib), and then finding images who&amp;rsquo;s mean color is most similar to the color corresponding to the current time of day.</description>
+    </item>
+    
+  </channel>
+</rss>

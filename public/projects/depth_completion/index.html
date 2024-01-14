@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Plane-Based Depth Image Completion</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='blog, gokarna, hugo'>
+
+    <meta property="og:url" content="https://nishchalb.github.io/projects/depth_completion/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Plane-Based Depth Image Completion">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://nishchalb.github.io/linkedin.jpeg">
+    <meta property="og:image:secure_url" content="https://nishchalb.github.io/linkedin.jpeg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plane-Based Depth Image Completion">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://nishchalb.github.io/projects/depth_completion/">
+    <meta property="twitter:url" content="https://nishchalb.github.io/projects/depth_completion/">
+    <meta name="twitter:image" content="https://nishchalb.github.io/linkedin.jpeg">
+
+    
+    <link rel="canonical" href="https://nishchalb.github.io/projects/depth_completion/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://nishchalb.github.io">
+                <img src='/linkedin.jpeg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://nishchalb.github.io">Nishchal Bhandari</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/nishchalb"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/nishchalb"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Plane-Based Depth Image Completion</h1>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><img src="/depthmodel.png" alt=""></p>
+<h1 id="abstract">Abstract</h1>
+<p>The Kinect has encountered widespread use in the areas of 3D mapping and computer vision thanks to its low cost,
+portability, and depth sensing capability. Unfortunately, its depth sensor has a maximum range of eight meters,
+and past four meters it tends to be very noisy. This work presents an approach to augment the Kinect with the ability
+to estimate the data that is missing from its sensors, providing a more complete picture of what is present in a given
+scene. In contrast to much of what has been done, our work takes an approach more suited to the three-dimensional
+structure of the world rather than relying on image processing techniques. We develop a model that utilizes image position, existing
+depth, color, and surface normal measurements and derive an algorithm that can estimate missing data in a depth image using
+only sensor data as input. Our results show that the generated estimates have a root mean square error of about 25 centimeters.</p>
+<p>Link: <a href="/BhandariDepthEstimation.pdf">Full PDF</a></p>
+<p><img src="/depth-header.png" alt=""></p>
+
+        </p>
+    </div>
+</div>
+
+
+
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

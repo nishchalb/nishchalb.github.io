@@ -1,0 +1,62 @@
+baseURL = "https://nishchalb.github.io"
+defaultContentLanguage = "en"
+languageCode = "en"
+
+title = "Nishchal Bhandari"
+theme = "gokarna"
+enableEmoji = true
+pygmentsStyle = "monokai"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3
+    ordered = false
+
+# Automatically generate robots.txt
+enableRobotsTXT = true
+[params]
+  ShowBackToTopButton = true # true or false for "back to top" button on posts
+  socialIcons = [
+    {name = "linkedin", url = "https://www.linkedin.com/in/nishchalb/"},
+    {name = "github", url = "https://github.com/nishchalb"},
+    {name = "flickr", url = "https://www.flickr.com/photos/nishchalb/"},
+    {name = "email", url = "mailto:nishchal2050@gmail.com"}
+  ]
+  metaKeywords = ["blog", "gokarna", "hugo"]
+  avatarURL = "/linkedin.jpeg"
+
+[menu]
+  # We use feather-icons: https://feathericons.com/
+  [[menu.main]]
+    name = "Home"
+    pre = "<span data-feather='home'></span>"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Posts"
+    pre = "<span data-feather='book'></span>"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "Projects"
+    pre = "<span data-feather='code'></span>"
+    url = "/projects/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Tags"
+    pre = "<span data-feather='tag'></span>"
+    url = "/tags/"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "github"
+    pre = "<span data-feather='github'></span>"
+    url = "https://github.com/nishchalb"
+    weight = 5
+  [[menu.main]]
+    identifier = "rss"
+    pre = "<span data-feather='rss'></span>"
+    url = "/index.xml"
+    weight = 6
