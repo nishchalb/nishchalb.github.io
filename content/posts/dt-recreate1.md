@@ -7,6 +7,10 @@ tags: ["darktable", "photography"]
 type: "post"
 image: "/dt1/pB2L52j.jpeg"
 draft: false
+comments:
+  host: mastodon.gamedev.place
+  username: nish
+  id: 111756754865209427
 ---
 
 ![](/dt1/Dqo7xDO.jpeg)

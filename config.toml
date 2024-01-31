@@ -7,6 +7,7 @@ theme = "gokarna"
 enableEmoji = true
 pygmentsStyle = "monokai"
 publishDir = "docs"
+custom_css = ["/css/custom.css"]
 
 [markup]
   [markup.tableOfContents]
@@ -17,6 +18,7 @@ publishDir = "docs"
 # Automatically generate robots.txt
 enableRobotsTXT = true
 [params]
+  custom_css = ["/css/custom.css"]
   ShowBackToTopButton = true # true or false for "back to top" button on posts
   socialIcons = [
     {name = "linkedin", url = "https://www.linkedin.com/in/nishchalb/"},

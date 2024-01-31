@@ -17,26 +17,26 @@
     
 
     
-    <title>Darktable: Recreate this look #1</title>
+    <title>Darktable: Emulate Film Halation</title>
     <meta name="description" content="">
     <meta name="keywords" content='blog, gokarna, hugo, darktable, photography'>
 
-    <meta property="og:url" content="https://nishchalb.github.io/posts/dt-recreate1/">
+    <meta property="og:url" content="https://nishchalb.github.io/posts/dt_halation/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Darktable: Recreate this look #1">
+    <meta property="og:title" content="Darktable: Emulate Film Halation">
     <meta property="og:description" content="">
-    <meta property="og:image" content="https://nishchalb.github.io/dt1/pB2L52j.jpeg">
-    <meta property="og:image:secure_url" content="https://nishchalb.github.io/dt1/pB2L52j.jpeg">
+    <meta property="og:image" content="https://nishchalb.github.io/dt-halation/h1.jpg">
+    <meta property="og:image:secure_url" content="https://nishchalb.github.io/dt-halation/h1.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Darktable: Recreate this look #1">
+    <meta name="twitter:title" content="Darktable: Emulate Film Halation">
     <meta name="twitter:description" content="">
-    <meta property="twitter:domain" content="https://nishchalb.github.io/posts/dt-recreate1/">
-    <meta property="twitter:url" content="https://nishchalb.github.io/posts/dt-recreate1/">
-    <meta name="twitter:image" content="https://nishchalb.github.io/dt1/pB2L52j.jpeg">
+    <meta property="twitter:domain" content="https://nishchalb.github.io/posts/dt_halation/">
+    <meta property="twitter:url" content="https://nishchalb.github.io/posts/dt_halation/">
+    <meta name="twitter:image" content="https://nishchalb.github.io/dt-halation/h1.jpg">
 
     
-    <link rel="canonical" href="https://nishchalb.github.io/posts/dt-recreate1/" />
+    <link rel="canonical" href="https://nishchalb.github.io/posts/dt_halation/" />
 
     
     <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
@@ -157,9 +157,9 @@
 <main id="content">
     <div class="post container">
     <div class="post-header-section">
-        <h1>Darktable: Recreate this look #1</h1>
+        <h1>Darktable: Emulate Film Halation</h1>
         <small role="doc-subtitle"></small>
-        <p class="post-date">January 14, 2024
+        <p class="post-date">January 30, 2024
         
         </p>
 
@@ -174,29 +174,27 @@
 
     <div class="post-content">
         <p>
-            <p><img src="/dt1/Dqo7xDO.jpeg" alt=""></p>
-<p>A while ago, someone asked online how to recreate the look of <a href="ttps://www.instagram.com/sanghan_">sanghan</a>.
-Here is my attempt at showing how to do this using darktable 3.6.</p>
-<p><img src="/dt1/pB2L52j.jpeg" alt=""></p>
-<p>Here is the end product of the edit. I found this image on <a href="https://www.signatureedits.com/free-raw-photos/">Signature Edits</a></p>
-<p><img src="/dt1/EBhTfXv.jpeg" alt=""></p>
-<p>Here is our starting point. Notice that the conditions are similar to the images we are using as inspiration. It&rsquo;s a lot easier to achieve a look when your lighting conditions are close.</p>
-<p><img src="/dt1/cfWb4yk.jpeg" alt=""></p>
-<p>First, we adjust our color calibration so that our whites are similar in hue to the target image. I measured that hue to be about 184 degrees (we set the opposite hue in this module, which would be 184 - 180 = 4).</p>
-<p><img src="/dt1/q1ZNoeS.jpeg" alt=""></p>
-<p>Next, I use the filmic rgb module to set my white and black relative exposures.</p>
-<p><img src="/dt1/fFxijvG.jpeg" alt=""></p>
-<p>I raise the &ldquo;target black luminace&rdquo; in filmic rgb to raise and crush the darker tones in the image.</p>
-<p><img src="/dt1/nczOcVR.jpeg" alt=""></p>
-<p>Using the new &ldquo;Color balance RGB&rdquo; module introduced in darktable 3.6, I massage the colors a bit. This gives us 3 different ways to control colorfulness. I mainly use the &ldquo;perceptual saturation grading&rdquo; to help adjust the colors in a way that doesn&rsquo;t look unrealistic. I keep most of the colorfulness in the shadows (which also has the side effect of darkening them), and decrease saturation in the midtones and highlights (which also brightens them). I bring &ldquo;brilliance &ldquo;down for both after to keep things from being too bright.</p>
-<p><img src="/dt1/P6CwTAh.jpeg" alt=""></p>
-<p>For the above image, I also make some luminance adjustments. I raised the global offset and reduce shadows to further crush the darker tones. Then I decrease highlights and increase power to reduce contrast.</p>
-<p><img src="/dt1/fM4JWlP.jpeg" alt=""></p>
-<p>Next, I add film grain and add some yellow-orange to the shadows (a hue I found in the source images).</p>
-<p><img src="/dt1/9fQNxIV.jpeg" alt=""></p>
-<p>Using a parametric mask to select non-cool tones, I add some red to the image.</p>
-<p><img src="/dt1/qiPIOHa.jpeg" alt=""></p>
-<p>I add some color back to the yellows with a similar technique. And we&rsquo;re done!</p>
+            <p><img src="/dt-halation/h1.jpg" alt=""></p>
+<p>I recently came across an article about the <a href="https://blog.dehancer.com/articles/halation/">halation effect</a> in film (check out that article if you are interested in a description of the effect). I wanted to
+emulate the effect using darktable, and thankfully the <code>Diffuse or Sharpen</code> module that was released in darktable 3.8 makes this pretty easy.</p>
+<p>The method I will describe below is heavily based on one by <a href="https://youtu.be/fG0gD96TSdc?si=vNQ9R8p-_Ku3WZhJ&amp;t=2480">one of the authors of the module</a>.</p>
+<p>I use the <code>IMG_9759</code> image from <a href="https://www.signatureedits.com/free-raw-photos/">Signature Edits</a> to demonstrate.</p>
+<h2 id="steps">Steps</h2>
+<p>First, enable an instance of the <code>Diffuse or Sharpen</code> module, and increase the 1st and 4th order speed to your liking. These will control the strength of the diffusion effect. The 1st order speed will affect lower frequencies in the image, while the 4th order speed will affect higher frequencies.</p>
+<p><img src="/dt-halation/diff1.jpg" alt=""></p>
+<p>Next, we will use the masking features of darktable to restrict the effect to areas and colors that we want. We set the Blend Mask mode to <code>RGB red channel</code> to restrict the diffusion effect to the Red channel of the image. We use <code>details threshold</code> to restrict the effect to higher contrast boundaries, and apply some blur to the mask to ensure the diffusion effect isn&rsquo;t cut off by it.</p>
+<p><img src="/dt-halation/diff1mask.png" alt=""></p>
+<p>This alone will create a red halation effect. You can use the properties, speed, and masking sliders to tune the effect.
+To change the color of the effect, you can duplicate the module and change the Blend mode to the RGB green or blue channel, and adjust opacity to get the desired color.</p>
+<p>And thats it!</p>
+<h2 id="comparison">Comparison</h2>
+<p>Here is a zoomed version of the above image without and with the effect:</p>
+<p><img src="/dt-halation/diff_without.jpg" alt="">
+<img src="/dt-halation/diff_with.jpg" alt=""></p>
+<p>If you would like to load the actual edits into darktable (I am using version 4.6.0), here is the <a href="/dt-halation/IMG_4255.CR3.xmp">XMP file</a></p>
+<p>And here is another example of applying the method to a different image also from Signature Edits, <code>@wutkaicheung tag @signatureeditsco - free raws from signatureedits.com_DSC00107(2).ARW</code> (before, then after)</p>
+<p><img src="/dt-halation/diff2_without.jpg" alt="">
+<img src="/dt-halation/diff2_with.jpg" alt=""></p>
 
         </p>
         

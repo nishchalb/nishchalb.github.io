@@ -6,7 +6,17 @@
     <description>Recent content in photography on Nishchal Bhandari</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://nishchalb.github.io/tags/photography/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://nishchalb.github.io/tags/photography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Darktable: Emulate Film Halation</title>
+      <link>https://nishchalb.github.io/posts/dt_halation/</link>
+      <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://nishchalb.github.io/posts/dt_halation/</guid>
+      <description>I recently came across an article about the halation effect in film (check out that article if you are interested in a description of the effect). I wanted to emulate the effect using darktable, and thankfully the Diffuse or Sharpen module that was released in darktable 3.8 makes this pretty easy.
+The method I will describe below is heavily based on one by one of the authors of the module.</description>
+    </item>
+    
     <item>
       <title>Darktable: Recreate this look #1</title>
       <link>https://nishchalb.github.io/posts/dt-recreate1/</link>
