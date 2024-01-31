@@ -1,7 +1,5 @@
 ---
 title: "Darktable: Recreate this look #1"
-#date: 2024-01-14T15:31:24.771466+00:00
-#date: 2021-04-15T23:39:49+05:30
 date: 2024-01-14
 tags: ["darktable", "photography"]
 type: "post"
@@ -15,7 +13,7 @@ comments:
 
 ![](/dt1/Dqo7xDO.jpeg)
 
-A while ago, someone asked online how to recreate the look of [sanghan](ttps://www.instagram.com/sanghan_).
+A while ago, someone asked online how to recreate the look of [sanghan](https://www.instagram.com/sanghan_).
 Here is my attempt at showing how to do this using darktable 3.6.
 
 ![](/dt1/pB2L52j.jpeg)
