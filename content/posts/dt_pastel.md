@@ -5,11 +5,10 @@ draft: false
 tags: ["darktable", "photography"]
 type: "post"
 image: "/dt-pastel/main.jpg"
-draft: false
 comments:
   host: mastodon.gamedev.place
   username: nish
-  id: 111848462658114096
+  id: 111905486151790316
 ---
 
 ![An photo of mine with pastel colors](/dt-pastel/main.jpg)
