@@ -42,7 +42,7 @@ Here is a zoomed version of the above image without and with the effect:
 ![](/dt-halation/diff_without.jpg)
 ![](/dt-halation/diff_with.jpg)
 
-If you would like to load the actual edits into darktable (I am using version 4.6.0), here is the [XMP file](/dt-halation/IMG_4255.CR3.xmp)
+If you would like to load the actual edits into darktable (I am using version 4.6.0), here is the [sidecar file](/dt-halation/IMG_4255.CR3.xmp)
 
 And here is another example of applying the method to a different image also from Signature Edits, `@wutkaicheung tag @signatureeditsco - free raws from signatureedits.com_DSC00107(2).ARW` (before, then after)
 

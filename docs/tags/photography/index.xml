@@ -6,7 +6,18 @@
     <description>Recent content in photography on Nishchal Bhandari</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 30 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://nishchalb.github.io/tags/photography/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Feb 2024 21:23:30 -0600</lastBuildDate><atom:link href="https://nishchalb.github.io/tags/photography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Darktable: Pastel Style</title>
+      <link>https://nishchalb.github.io/posts/dt_pastel/</link>
+      <pubDate>Fri, 09 Feb 2024 21:23:30 -0600</pubDate>
+      
+      <guid>https://nishchalb.github.io/posts/dt_pastel/</guid>
+      <description>Pastel colors are a useful tool to have in your photography toolkit. Editing images with this style can help you take advantage of bright harsh light, lack of shadows, and colorful elements.
+What is a pastel color? Wikipedia says they have &amp;ldquo;high value and low saturation&amp;rdquo;. With paint, you can achieve them by &amp;ldquo;mixing white&amp;rdquo; with your standard colors. But how can we do this in darktable?
+To understand how we can accomplish this, its helpful to look at the diagrams in the darktable manual on color dimensions.</description>
+    </item>
+    
     <item>
       <title>Darktable: Emulate Film Halation</title>
       <link>https://nishchalb.github.io/posts/dt_halation/</link>
