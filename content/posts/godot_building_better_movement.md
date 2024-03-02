@@ -4,7 +4,7 @@ date: 2024-02-28T21:18:17-06:00
 draft: false
 tags: ["godot", "gamedev"]
 type: "post"
-image: "/dt-pastel/main.jpg"
+image: "/godot_movement/adsr_good.png"
 katex: true
 markup: 'mmark'
 comments:
@@ -12,33 +12,6 @@ comments:
   username: nish
   id: 111905486151790316
 ---
-
-# Vision
-
-## Problem
-Game feel is important for real time games
-You want responsive controls. How to translate that to movement parameters?
-You want expressive controls
-whats wrong with standard physics equations
-
-## approach
-use fast funky 1d nonlinear functions
-building better jump by deriving constants to care about
-
-# Steps
-
-## game feel: responsiveness
-## why not constant velocity? expressiveness
-## attack-sustain-release
-### ASR of standard physics velocity control
-
-### decide on parameters we care about (time to reach max speed, time back to zero vel, max speed)
-### decide on curves we want to use, but in [0,1] domain+range
-### derive
-### code
-
-
-[](break between outline and draft)
 
 How do you create a responsive character controller? What does responsive even mean for this? What's wrong with using 
 standard physics equation for this? This blog post will cover these questions and how you how to build responsive movement in Godot.
@@ -48,6 +21,8 @@ A lot of this post is inspired by great resources that you should also check out
  - [Math for Game Programmers: Building a Better Jump](https://www.youtube.com/watch?v=hG9SzQxaCm8)
  - [Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations](https://www.youtube.com/watch?v=mr5xkf6zSzk)
  - [Game Feel, by Steve Swink](http://www.game-feel.com/)
+
+*Note that this post will demonstrate using Godot 3.4. KinematicBody2D has been renamed CharacterBody2D in Godot 4.*
 
 # Game Feel
 
@@ -71,7 +46,7 @@ Our super responsive controller is like the Castlevania jump, the player can onl
 
 # Physics-based controller
 
-The most natural way to add some ramping to our velocity is to add acceleration to our system using the standard kinemtic equations. The way this is typically done is by exposing a constant value of acceleration $a$ in a character controller. How would this look in our ASDR graph? Well, we know that a constant acceleration means a linear increase/decrease in velocity, so we end up with something like the trapezoid shaped graph from above.
+The most natural way to add some ramping to our velocity is to add acceleration to our system using the standard kinematic equations. The way this is typically done is by exposing a constant value of acceleration $a$ in a character controller. How would this look in our ASDR graph? Well, we know that a constant acceleration means a linear increase/decrease in velocity, so we end up with something like the trapezoid shaped graph from above.
 
 This gives a pretty good controller, but I argue that we could do even better.
 
@@ -81,7 +56,7 @@ What are the limitations of the trapezoid shaped graph? If we want to reach the 
 
 There's no reason we have to limit ourselves to a constant acceleration (and therefore linear velocity changes). If we drew curves in the attack and release section of our ADSR graph, how should they look to accomplish our goals? 
 
-We want velocity to react quickly when the player presses and releases an input, so the initial increase/decrease in velocity should happen quickly. The change in velocity can move more slowly after the input has been held/released for a while, giving the player more time before the maximum velocty for expressiveness. So, we want something like this:
+We want velocity to react quickly when the player presses and releases an input, so the initial increase/decrease in velocity should happen quickly. The change in velocity can move more slowly after the input has been held/released for a while, giving the player more time before the maximum velocity for expressiveness. So, we want something like this:
 
 ![Responsive and expressive ASDR](/godot_movement/adsr_good.png)
 
@@ -108,7 +83,7 @@ Just like our "attack" graph, our "release" graph starts quickly and slows down 
 
 # Building it
 
-Now that we have our equations, we can finally move on to implementing things! How should we do it? To know what player's velocity should be, we need to knowhow long the player has held (or released) the input.
+Now that we have our equations, we can finally move on to implementing things! How should we do it? To know what player's velocity should be, we need to know how long the player has held (or released) the input.
 
 One option for for doing this is to track this as additional state, but this could get messy. Adding another state to track creates a new avenue for bugs. Is it possible to move on without it?
 
@@ -121,3 +96,180 @@ Release equation:
 $$t=1-\sqrt{v}$$
 
 Let's set up a simple scene in Godot to implement these into a character controller:
+
+![Godot scene](/godot_movement/scene.png)
+
+At the root, we have a KinematicBody2D node which provides an interface for movement with collision handling. Under it, we have:
+ - A sprite containing the visual of the player
+ - A Node2D to contain our movement interface
+
+The top level script is very simple:
+```gdscript
+extends KinematicBody2D
+var velocity: Vector2 = Vector2()
+
+func _physics_process(delta):
+
+    velocity = $Movement.handle_move(velocity, delta)
+    move_and_slide(velocity)
+```
+
+It's good practice to keep systems that don't need to be coupled isolated. In this case, we are going to isolate most logic into a script on our `Movement` 
+node, and let other nodes interface with it through a single method: `handle_move`. Note that the input to `move_and_slide` is a linear velocity, so it should **not** be multiplied by our `delta` timestep.
+
+Let's start work on our `Movement` node's script by writing `handle_move`:
+```gdscript
+extends Node2D
+
+export var max_speed: float = 800
+export var t_max_speed: float = 0.75 # In seconds
+export var t_stop: float = 0.75
+
+
+
+func handle_move(velocity: Vector2, delta: float) -> Vector2:
+    """ Handle movement related state variables that change each timestep
+    """
+    var input_velocity: Vector2 = Input.get_vector("move_left",
+        "move_right", "move_up", "move_down")
+
+    if input_velocity.length_squared() > 0:
+        return velocity_accel(velocity, input_velocity, delta)
+    else:
+        return velocity_decel(velocity, delta)
+```
+
+Our exported variables in this script correspond to what we want to be able to tune for the player's movement:
+ - `max_speed` corresponds to $V_{max}$
+ - `t_max_speed` corresponds to $T\_A$
+ - `t_stop` corresponds to $T\_R$
+
+The `velocity_accel` and `velocity_decel` functions will calculate a new velocity given the previous velocity, and the amount of time passed. 
+
+We read an input vector that describes which direction the player's current input is pointing (note that you should configure these input actions and their corresponding bindings under the `Project Settings > Input Map`). If the input is greater than zero, it means the player is pressing an input, so we will return `velocity_accel` which will implement our attack equation. If no input is held, we will return a velocity corresponding to our release equation with `velocity_decel`. Note that `velocity_decel` does not need our input vector, because it is only active when no input is present.
+
+Now, let's work on `velocity_accel`:
+```gdscript
+func velocity_accel(v_0: Vector2, direction: Vector2, delta: float) -> Vector2:
+    """ Given a positive initial 2D velocity and a delta time, return a positive
+    new velocity based on a custom 'game-feel' curve.
+    """
+    v_0 = v_0.clamped(max_speed)
+    
+    # Map to [0,1] to simplify
+    var speed = v_0.length() / max_speed
+```
+We start by making sure the input is not over our max speed, and normalize it so we can plug it into our equations. Next, we calculate what value of $t$ our current `v_0` corresponds to:
+
+```gdscript
+# Derive where we are in time [0,1] based on current speed
+    var t: float = 1 - sqrt(1 - speed)
+    if is_nan(t):
+        # speed is 1, so t is 1
+        t = 1
+```
+
+To get our new value of `t` we can simply add the `delta` time. But, how do we handle our configurable `t_max_speed`? We want to squish or stretch the time axis of our graphs depending on how long we want it to take the curve to go from 0 to 1. We can accomplish this by dividing the $t$ in our equations. For example, if we wanted our `t_max_speed` to be 0.5:
+![Scaled attack graph](/godot_movement/graph_scaled.png)
+
+Which means we can write our new value of `t` as
+```gdscript
+    var t_new: float = t + (delta/t_max_speed)
+```
+
+And lastly, we calculate what the new velocity should be for `t_new`:
+```gdscript
+    # Calculate speed based on new t
+    if t_new >= 1:
+        return direction.normalized() * max_speed
+    var speed_new: float = clamp(1 - (1-t_new)*(1-t_new), 0 ,1)
+    return direction.normalized() * speed_new * max_speed
+```
+Above, we can calculate the speed independent of the direction because we know the direction of movement is given by the player input. `speed_new` will range from 0 to 1, so we multiply by our `max_speed` at the end to get the final velocity.
+
+We can work similarly to implement `velocity_decel` with our release equation:
+```gdscript
+func velocity_decel(v_0: Vector2, delta: float) -> Vector2:
+    """ Given a positive initial 2D velocity and a delta time, return a new positive
+    velocity that is slower, based on the Player's parameters.
+    """
+    var speed = v_0.clamped(max_speed).length() / max_speed
+    var t: float = 1 - sqrt(speed)
+    if is_nan(t):
+        t = 1
+    var t_new: float = t + (delta/t_stop)
+    if t_new >= t_stop:
+        return Vector2()
+    var speed_new = clamp((1-t_new)*(1-t_new), 0, 1)
+    return v_0.normalized() * speed_new * max_speed
+```
+
+Our final `Movement` script will look like:
+```gdscript
+extends Node2D
+
+export var max_speed: float = 800
+export var t_max_speed: float = 0.75 # In seconds
+export var t_stop: float = 0.75
+
+
+
+func handle_move(velocity: Vector2, delta: float) -> Vector2:
+    """ Handle movement related state variables that change each timestep
+    """
+    var input_velocity: Vector2 = Input.get_vector("move_left",
+        "move_right", "move_up", "move_down")
+
+    if input_velocity.length_squared() > 0:
+        return velocity_accel(velocity, input_velocity, delta)
+    else:
+        return velocity_decel(velocity, delta)
+        
+
+func velocity_accel(v_0: Vector2, direction: Vector2, delta: float) -> Vector2:
+    """ Given a positive initial 2D velocity and a delta time, return a positive
+    new velocity based on a custom 'game-feel' curve.
+    """
+    v_0 = v_0.clamped(max_speed)
+    
+    # Map to [0,1] to simplify
+    var speed = v_0.length() / max_speed
+    
+    # Derive where we are in time [0,1] based on current speed
+    var t: float = 1 - sqrt(1 - speed)
+    if is_nan(t):
+        # speed is 1, so t is 1
+        t = 1
+    var t_new: float = t + (delta/t_max_speed)
+    
+    # Calculate speed based on new t
+    if t_new >= 1:
+        return direction.normalized() * max_speed
+    var speed_new: float = clamp(1 - (1-t_new)*(1-t_new), 0 ,1)
+    return direction.normalized() * speed_new * max_speed
+    
+func velocity_decel(v_0: Vector2, delta: float) -> Vector2:
+    """ Given a positive initial 2D velocity and a delta time, return a new positive
+    velocity that is slower, based on the Player's parameters.
+    """
+    var speed = v_0.clamped(max_speed).length() / max_speed
+    var t: float = 1 - sqrt(speed)
+    if is_nan(t):
+        t = 1
+    var t_new: float = t + (delta/t_stop)
+    if t_new >= t_stop:
+        return Vector2()
+    var speed_new = clamp((1-t_new)*(1-t_new), 0, 1)
+    return v_0.normalized() * speed_new * max_speed
+
+```
+
+And we're done! Here's how it looks in action:
+
+{{< video src="/godot_movement/movement.webm" >}}
+
+You can easily tweak the timing parameters depending on how long you want the speed to ramp up and down. 
+
+The movement system for a game I'm working on is based on this:
+
+{{< video src="/godot_movement/movement_floof.webm" >}}
