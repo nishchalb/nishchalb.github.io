@@ -266,10 +266,10 @@ func velocity_decel(v_0: Vector2, delta: float) -> Vector2:
 
 And we're done! Here's how it looks in action:
 
-{{< video src="/godot_movement/movement.webm" >}}
+{{< video src="/godot_movement/movement2.mp4" >}}
 
 You can easily tweak the timing parameters depending on how long you want the speed to ramp up and down. 
 
 The movement system for a game I'm working on is based on this:
 
-{{< video src="/godot_movement/movement_floof.webm" >}}
+{{< video src="/godot_movement/movement_floof.mp4" >}}
