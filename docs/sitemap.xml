@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://nishchalb.github.io/posts/godot_building_better_movement/</loc>
+    <lastmod>2024-02-28T21:18:17-06:00</lastmod>
+  </url><url>
+    <loc>https://nishchalb.github.io/tags/gamedev/</loc>
+    <lastmod>2024-02-28T21:18:17-06:00</lastmod>
+  </url><url>
+    <loc>https://nishchalb.github.io/tags/godot/</loc>
+    <lastmod>2024-02-28T21:18:17-06:00</lastmod>
+  </url><url>
+    <loc>https://nishchalb.github.io/</loc>
+    <lastmod>2024-02-28T21:18:17-06:00</lastmod>
+  </url><url>
+    <loc>https://nishchalb.github.io/posts/</loc>
+    <lastmod>2024-02-28T21:18:17-06:00</lastmod>
+  </url><url>
+    <loc>https://nishchalb.github.io/tags/</loc>
+    <lastmod>2024-02-28T21:18:17-06:00</lastmod>
+  </url><url>
     <loc>https://nishchalb.github.io/tags/darktable/</loc>
     <lastmod>2024-02-09T21:23:30-06:00</lastmod>
   </url><url>
     <loc>https://nishchalb.github.io/posts/dt_pastel/</loc>
     <lastmod>2024-02-09T21:23:30-06:00</lastmod>
   </url><url>
-    <loc>https://nishchalb.github.io/</loc>
-    <lastmod>2024-02-09T21:23:30-06:00</lastmod>
-  </url><url>
     <loc>https://nishchalb.github.io/tags/photography/</loc>
-    <lastmod>2024-02-09T21:23:30-06:00</lastmod>
-  </url><url>
-    <loc>https://nishchalb.github.io/posts/</loc>
-    <lastmod>2024-02-09T21:23:30-06:00</lastmod>
-  </url><url>
-    <loc>https://nishchalb.github.io/tags/</loc>
     <lastmod>2024-02-09T21:23:30-06:00</lastmod>
   </url><url>
     <loc>https://nishchalb.github.io/posts/dt_halation/</loc>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Building Better Movement in Godot</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='blog, gokarna, hugo, godot, gamedev'>
+
+    <meta property="og:url" content="https://nishchalb.github.io/posts/godot_building_better_movement/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Building Better Movement in Godot">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://nishchalb.github.io/godot_movement/adsr_good.png">
+    <meta property="og:image:secure_url" content="https://nishchalb.github.io/godot_movement/adsr_good.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building Better Movement in Godot">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://nishchalb.github.io/posts/godot_building_better_movement/">
+    <meta property="twitter:url" content="https://nishchalb.github.io/posts/godot_building_better_movement/">
+    <meta name="twitter:image" content="https://nishchalb.github.io/godot_movement/adsr_good.png">
+
+    
+    <link rel="canonical" href="https://nishchalb.github.io/posts/godot_building_better_movement/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+    // css
+    <link rel="stylesheet" href="/css/custom.css">
+
+    
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://nishchalb.github.io">
+                <img src='/linkedin.jpeg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://nishchalb.github.io">Nishchal Bhandari</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/nishchalb"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/nishchalb"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Building Better Movement in Godot</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">February 28, 2024
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://nishchalb.github.io/tags/godot">godot</a></li>
+        
+            <li class="post-tag"><a href="https://nishchalb.github.io/tags/gamedev">gamedev</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>How do you create a responsive character controller? What does responsive even mean for this? What&rsquo;s wrong with using
+standard physics equation for this? This blog post will cover these questions and how you how to build responsive movement in Godot.</p>
+<p>A lot of this post is inspired by great resources that you should also check out:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=hG9SzQxaCm8">Math for Game Programmers: Building a Better Jump</a></li>
+<li><a href="https://www.youtube.com/watch?v=mr5xkf6zSzk">Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations</a></li>
+<li><a href="http://www.game-feel.com/">Game Feel, by Steve Swink</a></li>
+</ul>
+<p><em>Note that this post will demonstrate using Godot 3.4. KinematicBody2D has been renamed CharacterBody2D in Godot 4.</em></p>
+<h1 id="game-feel">Game Feel</h1>
+<p>In Swink&rsquo;s book, he notes that one of they keys to real-time character controller &ldquo;feeling good&rdquo; in a game is responsiveness.
+To describe what responsiveness is, he borrows a concept from music: <a href="https://en.wikipedia.org/wiki/Envelope_(music)">Attack, Decay, Sustain, Release</a> (shortened as ADSR). To look at how responsive a character controller is, we can look at the ADSR of how the player&rsquo;s velocity responds to input.</p>
+<p><img src="/godot_movement/adsr.png" alt="ASDR Example"></p>
+<p>We have a few variables of interest to us:</p>
+<ul>
+<li>$V_{max}$, the maximum velocity the player can reach</li>
+<li>$T_A$, the attack time e.g. the time it takes to reach the max speed from zero when the player is holding an input</li>
+<li>$T_R$, the release time e.g. the time it takes to get back to zero velocity from the max when the player releases input</li>
+</ul>
+<p>Our movement can be considered responsive if it responds quickly to player input, both in terms of attack and release. This begs a question: why not set both $T_A$ and $T_R$ to zero? With a character controller like this, the player reaches $V_{max}$ as soon as the input is pressed, and goes back to zero velocity as soon as the input is released.</p>
+<p>It&rsquo;s true that this controller would be responsive, but we lose another key aspect of game feel that Swink describes in his book: expressiveness.
+This concept is also touched on in <a href="https://www.gdcvault.com/play/1027580/Design-Sandbox-Analog-vs-Digital">this GDC presentation</a>. Essentially, we can consider controls expressive if they allow the player to reach a wide range of values rather than just a single value. A good example with jumping is Castlevania vs. Mario. When the player jumps in Castlevania, it is always a fixed arc. But in Mario, the player can vary the jump depending on how long the input is pressed.</p>
+<p>Our super responsive controller is like the Castlevania jump, the player can only move at one specific velocity. We want our attack and release times greater than zero, and our player&rsquo;s velocity to ramp up and down when inputs are pressed.</p>
+<h1 id="physics-based-controller">Physics-based controller</h1>
+<p>The most natural way to add some ramping to our velocity is to add acceleration to our system using the standard kinematic equations. The way this is typically done is by exposing a constant value of acceleration $a$ in a character controller. How would this look in our ASDR graph? Well, we know that a constant acceleration means a linear increase/decrease in velocity, so we end up with something like the trapezoid shaped graph from above.</p>
+<p>This gives a pretty good controller, but I argue that we could do even better.</p>
+<p>What are the limitations of the trapezoid shaped graph? If we want to reach the maximum velocity quickly, we have to set $T_A$ and $T_R$ to small amounts. But then the player doesn&rsquo;t have us much time to be expressive. How can we allow for larger values of attack and release time while still having things feel responsive?</p>
+<h1 id="curve-your-enthusiasm">Curve your enthusiasm</h1>
+<p>There&rsquo;s no reason we have to limit ourselves to a constant acceleration (and therefore linear velocity changes). If we drew curves in the attack and release section of our ADSR graph, how should they look to accomplish our goals?</p>
+<p>We want velocity to react quickly when the player presses and releases an input, so the initial increase/decrease in velocity should happen quickly. The change in velocity can move more slowly after the input has been held/released for a while, giving the player more time before the maximum velocity for expressiveness. So, we want something like this:</p>
+<p><img src="/godot_movement/adsr_good.png" alt="Responsive and expressive ASDR"></p>
+<p>It was easy enough to draw, but how can we implement it in Godot? We could try writing our character physics code with non-constant acceleration, but let&rsquo;s try something else&hellip;</p>
+<h2 id="normalized-functions">Normalized functions</h2>
+<p>Inspired by &ldquo;Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations&rdquo;, we&rsquo;re going to make things simpler for ourselves by restricting our input and output ranges to $[0, 1]$ and writing our curve equations that way.</p>
+<p>What function should we use for the attack portion of our graph? I&rsquo;m going to choose
+$$v=1-(1-t)^2$$,
+as it fits our criteria and will make some future things easier.</p>
+<p><img src="/godot_movement/graph_attack.png" alt="Graph for the above equation"></p>
+<p>Notice that the graph starts out increasing quickly, but smoothly slows down to its maximum. Also notice that the domain and range of our function is $[0, 1]$.</p>
+<p>We can slightly adjust this function to get a curve that fits our criteria for the release portion:
+$$v=(1-t)^2$$</p>
+<p><img src="/godot_movement/graph_release.png" alt="Graph for the release equation"></p>
+<p>Just like our &ldquo;attack&rdquo; graph, our &ldquo;release&rdquo; graph starts quickly and slows down as it reaches the final value (zero, in the case of release).</p>
+<h1 id="building-it">Building it</h1>
+<p>Now that we have our equations, we can finally move on to implementing things! How should we do it? To know what player&rsquo;s velocity should be, we need to know how long the player has held (or released) the input.</p>
+<p>One option for for doing this is to track this as additional state, but this could get messy. Adding another state to track creates a new avenue for bugs. Is it possible to move on without it?</p>
+<p>Take another close look at our graphs. The one state we need to track is the player&rsquo;s velocity, but if we know that, we can also figure out where we are in the x-axis (time) of the graph. Our functions are invertible! Let&rsquo;s solve our equations for $t$:</p>
+<p>Attack equation:
+$$t=1-\sqrt{1-v}$$</p>
+<p>Release equation:
+$$t=1-\sqrt{v}$$</p>
+<p>Let&rsquo;s set up a simple scene in Godot to implement these into a character controller:</p>
+<p><img src="/godot_movement/scene.png" alt="Godot scene"></p>
+<p>At the root, we have a KinematicBody2D node which provides an interface for movement with collision handling. Under it, we have:</p>
+<ul>
+<li>A sprite containing the visual of the player</li>
+<li>A Node2D to contain our movement interface</li>
+</ul>
+<p>The top level script is very simple:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">KinematicBody2D</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> velocity: <span style="color:#a6e22e">Vector2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Vector2</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> _physics_process(delta):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    velocity <span style="color:#f92672">=</span> <span style="color:#f92672">$</span>Movement<span style="color:#f92672">.</span>handle_move(velocity, delta)
+</span></span><span style="display:flex;"><span>    move_and_slide(velocity)
+</span></span></code></pre></div><p>It&rsquo;s good practice to keep systems that don&rsquo;t need to be coupled isolated. In this case, we are going to isolate most logic into a script on our <code>Movement</code>
+node, and let other nodes interface with it through a single method: <code>handle_move</code>. Note that the input to <code>move_and_slide</code> is a linear velocity, so it should <strong>not</strong> be multiplied by our <code>delta</code> timestep.</p>
+<p>Let&rsquo;s start work on our <code>Movement</code> node&rsquo;s script by writing <code>handle_move</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Node2D</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> max_speed: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> t_max_speed: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.75</span> <span style="color:#75715e"># In seconds</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> t_stop: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.75</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> handle_move(velocity: <span style="color:#a6e22e">Vector2</span>, delta: <span style="color:#a6e22e">float</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">Vector2</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; Handle movement related state variables that change each timestep
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> input_velocity: <span style="color:#a6e22e">Vector2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Input</span><span style="color:#f92672">.</span>get_vector(<span style="color:#e6db74">&#34;move_left&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;move_right&#34;</span>, <span style="color:#e6db74">&#34;move_up&#34;</span>, <span style="color:#e6db74">&#34;move_down&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> input_velocity<span style="color:#f92672">.</span>length_squared() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> velocity_accel(velocity, input_velocity, delta)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> velocity_decel(velocity, delta)
+</span></span></code></pre></div><p>Our exported variables in this script correspond to what we want to be able to tune for the player&rsquo;s movement:</p>
+<ul>
+<li><code>max_speed</code> corresponds to $V_{max}$</li>
+<li><code>t_max_speed</code> corresponds to $T_A$</li>
+<li><code>t_stop</code> corresponds to $T_R$</li>
+</ul>
+<p>The <code>velocity_accel</code> and <code>velocity_decel</code> functions will calculate a new velocity given the previous velocity, and the amount of time passed.</p>
+<p>We read an input vector that describes which direction the player&rsquo;s current input is pointing (note that you should configure these input actions and their corresponding bindings under the <code>Project Settings &gt; Input Map</code>). If the input is greater than zero, it means the player is pressing an input, so we will return <code>velocity_accel</code> which will implement our attack equation. If no input is held, we will return a velocity corresponding to our release equation with <code>velocity_decel</code>. Note that <code>velocity_decel</code> does not need our input vector, because it is only active when no input is present.</p>
+<p>Now, let&rsquo;s work on <code>velocity_accel</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> velocity_accel(v_0: <span style="color:#a6e22e">Vector2</span>, direction: <span style="color:#a6e22e">Vector2</span>, delta: <span style="color:#a6e22e">float</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">Vector2</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; Given a positive initial 2D velocity and a delta time, return a positive
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    new velocity based on a custom &#39;game-feel&#39; curve.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    v_0 <span style="color:#f92672">=</span> v_0<span style="color:#f92672">.</span>clamped(max_speed)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Map to [0,1] to simplify</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> speed <span style="color:#f92672">=</span> v_0<span style="color:#f92672">.</span>length() <span style="color:#f92672">/</span> max_speed
+</span></span></code></pre></div><p>We start by making sure the input is not over our max speed, and normalize it so we can plug it into our equations. Next, we calculate what value of $t$ our current <code>v_0</code> corresponds to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span><span style="color:#75715e"># Derive where we are in time [0,1] based on current speed</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> t: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> sqrt(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> speed)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> is_nan(t):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># speed is 1, so t is 1</span>
+</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>To get our new value of <code>t</code> we can simply add the <code>delta</code> time. But, how do we handle our configurable <code>t_max_speed</code>? We want to squish or stretch the time axis of our graphs depending on how long we want it to take the curve to go from 0 to 1. We can accomplish this by dividing the $t$ in our equations. For example, if we wanted our <code>t_max_speed</code> to be 0.5:
+<img src="/godot_movement/graph_scaled.png" alt="Scaled attack graph"></p>
+<p>Which means we can write our new value of <code>t</code> as</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> t_new: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> t <span style="color:#f92672">+</span> (delta<span style="color:#f92672">/</span>t_max_speed)
+</span></span></code></pre></div><p>And lastly, we calculate what the new velocity should be for <code>t_new</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate speed based on new t</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> t_new <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> direction<span style="color:#f92672">.</span>normalized() <span style="color:#f92672">*</span> max_speed
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> speed_new: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> clamp(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>t_new)<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>t_new), <span style="color:#ae81ff">0</span> ,<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> direction<span style="color:#f92672">.</span>normalized() <span style="color:#f92672">*</span> speed_new <span style="color:#f92672">*</span> max_speed
+</span></span></code></pre></div><p>Above, we can calculate the speed independent of the direction because we know the direction of movement is given by the player input. <code>speed_new</code> will range from 0 to 1, so we multiply by our <code>max_speed</code> at the end to get the final velocity.</p>
+<p>We can work similarly to implement <code>velocity_decel</code> with our release equation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> velocity_decel(v_0: <span style="color:#a6e22e">Vector2</span>, delta: <span style="color:#a6e22e">float</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">Vector2</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; Given a positive initial 2D velocity and a delta time, return a new positive
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    velocity that is slower, based on the Player&#39;s parameters.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> speed <span style="color:#f92672">=</span> v_0<span style="color:#f92672">.</span>clamped(max_speed)<span style="color:#f92672">.</span>length() <span style="color:#f92672">/</span> max_speed
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> t: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> sqrt(speed)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> is_nan(t):
+</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> t_new: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> t <span style="color:#f92672">+</span> (delta<span style="color:#f92672">/</span>t_stop)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> t_new <span style="color:#f92672">&gt;=</span> t_stop:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Vector2</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> speed_new <span style="color:#f92672">=</span> clamp((<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>t_new)<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>t_new), <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> v_0<span style="color:#f92672">.</span>normalized() <span style="color:#f92672">*</span> speed_new <span style="color:#f92672">*</span> max_speed
+</span></span></code></pre></div><p>Our final <code>Movement</code> script will look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Node2D</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> max_speed: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">800</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> t_max_speed: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.75</span> <span style="color:#75715e"># In seconds</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> t_stop: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.75</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> handle_move(velocity: <span style="color:#a6e22e">Vector2</span>, delta: <span style="color:#a6e22e">float</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">Vector2</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; Handle movement related state variables that change each timestep
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> input_velocity: <span style="color:#a6e22e">Vector2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Input</span><span style="color:#f92672">.</span>get_vector(<span style="color:#e6db74">&#34;move_left&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;move_right&#34;</span>, <span style="color:#e6db74">&#34;move_up&#34;</span>, <span style="color:#e6db74">&#34;move_down&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> input_velocity<span style="color:#f92672">.</span>length_squared() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> velocity_accel(velocity, input_velocity, delta)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> velocity_decel(velocity, delta)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> velocity_accel(v_0: <span style="color:#a6e22e">Vector2</span>, direction: <span style="color:#a6e22e">Vector2</span>, delta: <span style="color:#a6e22e">float</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">Vector2</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; Given a positive initial 2D velocity and a delta time, return a positive
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    new velocity based on a custom &#39;game-feel&#39; curve.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    v_0 <span style="color:#f92672">=</span> v_0<span style="color:#f92672">.</span>clamped(max_speed)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Map to [0,1] to simplify</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> speed <span style="color:#f92672">=</span> v_0<span style="color:#f92672">.</span>length() <span style="color:#f92672">/</span> max_speed
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Derive where we are in time [0,1] based on current speed</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> t: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> sqrt(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> speed)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> is_nan(t):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># speed is 1, so t is 1</span>
+</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> t_new: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> t <span style="color:#f92672">+</span> (delta<span style="color:#f92672">/</span>t_max_speed)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Calculate speed based on new t</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> t_new <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> direction<span style="color:#f92672">.</span>normalized() <span style="color:#f92672">*</span> max_speed
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> speed_new: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> clamp(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>t_new)<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>t_new), <span style="color:#ae81ff">0</span> ,<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> direction<span style="color:#f92672">.</span>normalized() <span style="color:#f92672">*</span> speed_new <span style="color:#f92672">*</span> max_speed
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> velocity_decel(v_0: <span style="color:#a6e22e">Vector2</span>, delta: <span style="color:#a6e22e">float</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">Vector2</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; Given a positive initial 2D velocity and a delta time, return a new positive
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    velocity that is slower, based on the Player&#39;s parameters.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> speed <span style="color:#f92672">=</span> v_0<span style="color:#f92672">.</span>clamped(max_speed)<span style="color:#f92672">.</span>length() <span style="color:#f92672">/</span> max_speed
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> t: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> sqrt(speed)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> is_nan(t):
+</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> t_new: <span style="color:#a6e22e">float</span> <span style="color:#f92672">=</span> t <span style="color:#f92672">+</span> (delta<span style="color:#f92672">/</span>t_stop)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> t_new <span style="color:#f92672">&gt;=</span> t_stop:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Vector2</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> speed_new <span style="color:#f92672">=</span> clamp((<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>t_new)<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>t_new), <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> v_0<span style="color:#f92672">.</span>normalized() <span style="color:#f92672">*</span> speed_new <span style="color:#f92672">*</span> max_speed
+</span></span></code></pre></div><p>And we&rsquo;re done! Here&rsquo;s how it looks in action:</p>
+<center>
+  <video width='
+    
+      100%
+    '
+  controls>
+    <source src="/godot_movement/movement.webm" type="video/webm">
+    Your browser does not support the video tag.
+  </video>
+</center>
+
+<p>You can easily tweak the timing parameters depending on how long you want the speed to ramp up and down.</p>
+<p>The movement system for a game I&rsquo;m working on is based on this:</p>
+<center>
+  <video width='
+    
+      100%
+    '
+  controls>
+    <source src="/godot_movement/movement_floof.webm" type="video/webm">
+    Your browser does not support the video tag.
+  </video>
+</center>
+
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+<section id="comments" class="comments">
+  <h2>Comments</h2>
+  <p>With an account on the Fediverse or Mastodon, you can respond to this <a href="https://mastodon.gamedev.place/@nish/111905486151790316">post</a>. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. Known non-private replies are displayed below.</p>
+
+  <p id="mastodon-comments-list"><button id="load-comment">Load comments</button></p>
+  <div id="comments-wrapper">
+    <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="https://mastodon.gamedev.place/@nish/111905486151790316">the original post</a> on Mastodon.</p></noscript>
+  </div>
+  <noscript>You need JavaScript to view the comments.</noscript>
+  <script src="/purify.min.js"></script>
+  <script type="text/javascript">
+    function escapeHtml(unsafe) {
+      return unsafe
+           .replace(/&/g, "&amp;")
+           .replace(/</g, "&lt;")
+           .replace(/>/g, "&gt;")
+           .replace(/"/g, "&quot;")
+           .replace(/'/g, "&#039;");
+    }
+    function emojify(input, emojis) {
+      let output = input;
+
+      emojis.forEach(emoji => {
+        let picture = document.createElement("picture");
+
+        let source = document.createElement("source");
+        source.setAttribute("srcset", escapeHtml(emoji.url));
+        source.setAttribute("media", "(prefers-reduced-motion: no-preference)");
+
+        let img = document.createElement("img");
+        img.className = "emoji";
+        img.setAttribute("src", escapeHtml(emoji.static_url));
+        img.setAttribute("alt", `:${ emoji.shortcode }:`);
+        img.setAttribute("title", `:${ emoji.shortcode }:`);
+
+        picture.appendChild(source);
+        picture.appendChild(img);
+
+        output = output.replace(`:${ emoji.shortcode }:`, picture.outerHTML);
+      });
+
+      return output;
+    }
+
+    function loadComments() {
+      let commentsWrapper = document.getElementById("comments-wrapper");
+      document.getElementById("load-comment").innerHTML = "Loading";
+      fetch('https://mastodon.gamedev.place/api/v1/statuses/111905486151790316/context')
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          let descendants = data['descendants'];
+          if(
+            descendants &&
+            Array.isArray(descendants) &&
+            descendants.length > 0
+          ) {
+            commentsWrapper.innerHTML = "";
+
+            descendants.forEach(function(status) {
+                console.log(descendants)
+              if( status.account.display_name.length > 0 ) {
+                status.account.display_name = escapeHtml(status.account.display_name);
+                status.account.display_name = emojify(status.account.display_name, status.account.emojis);
+              } else {
+                status.account.display_name = status.account.username;
+              };
+
+              let instance = "";
+              if( status.account.acct.includes("@") ) {
+                instance = status.account.acct.split("@")[1];
+              } else {
+                instance = "mastodon.gamedev.place";
+              }
+
+              const isReply = status.in_reply_to_id !== "111905486151790316";
+
+              let op = false;
+              if( status.account.acct == "nish" ) {
+                op = true;
+              }
+
+              status.content = emojify(status.content, status.emojis);
+
+              let avatarSource = document.createElement("source");
+              avatarSource.setAttribute("srcset", escapeHtml(status.account.avatar));
+              avatarSource.setAttribute("media", "(prefers-reduced-motion: no-preference)");
+
+              let avatarImg = document.createElement("img");
+              avatarImg.className = "mastodon-avatar";
+              avatarImg.setAttribute("src", escapeHtml(status.account.avatar_static));
+              avatarImg.setAttribute("alt", `@${ status.account.username }@${ instance } avatar`);
+              avatarImg.setAttribute("width", "60px");
+
+              let avatarPicture = document.createElement("picture");
+              avatarPicture.appendChild(avatarSource);
+              avatarPicture.appendChild(avatarImg);
+
+              let avatar = document.createElement("a");
+              avatar.className = "avatar-link";
+              avatar.setAttribute("href", status.account.url);
+              avatar.setAttribute("rel", "external nofollow");
+              avatar.setAttribute("title", `View profile at @${ status.account.username }@${ instance }`);
+              avatar.appendChild(avatarPicture);
+
+              let instanceBadge = document.createElement("a");
+              instanceBadge.className = "instance";
+              instanceBadge.setAttribute("href", status.account.url);
+              instanceBadge.setAttribute("title", `@${ status.account.username }@${ instance }`);
+              instanceBadge.setAttribute("rel", "external nofollow");
+              instanceBadge.textContent = instance;
+
+              let display = document.createElement("span");
+              display.className = "display";
+              display.setAttribute("itemprop", "author");
+              display.setAttribute("itemtype", "http://schema.org/Person");
+              display.innerHTML = status.account.display_name;
+
+              let header = document.createElement("header");
+              header.className = "author";
+              header.appendChild(display);
+              header.appendChild(instanceBadge);
+
+              let permalink = document.createElement("a");
+              permalink.setAttribute("href", status.url);
+              permalink.setAttribute("itemprop", "url");
+              permalink.setAttribute("title", `View comment at ${ instance }`);
+              permalink.setAttribute("rel", "external nofollow");
+              permalink.textContent = new Date( status.created_at ).toLocaleString('en-US', {
+                dateStyle: "long",
+                timeStyle: "short",
+              });
+
+              let timestamp = document.createElement("time");
+              timestamp.setAttribute("datetime", status.created_at);
+              timestamp.appendChild(permalink);
+
+              let main = document.createElement("main");
+              main.setAttribute("itemprop", "text");
+              main.innerHTML = status.content;
+
+              let interactions = document.createElement("footer");
+              if(status.favourites_count > 0) {
+                let faves = document.createElement("a");
+                faves.className = "faves";
+                faves.setAttribute("href", `${ status.url }/favourites`);
+                faves.setAttribute("title", `Favorites from ${ instance }`);
+                faves.textContent = status.favourites_count;
+
+                interactions.appendChild(faves);
+              }
+
+              let comment = document.createElement("article");
+              comment.id = `comment-${ status.id }`;
+              comment.className = isReply ? "mastodon-comment comment-reply" : "mastodon-comment";
+              comment.setAttribute("itemprop", "comment");
+              comment.setAttribute("itemtype", "http://schema.org/Comment");
+              comment.appendChild(avatar);
+              comment.appendChild(header);
+              comment.appendChild(timestamp);
+              comment.appendChild(main);
+              comment.appendChild(interactions);
+
+              if(op === true) {
+                comment.classList.add("op");
+
+                avatar.classList.add("op");
+                avatar.setAttribute(
+                  "title",
+                  "Blog post author; " + avatar.getAttribute("title")
+                );
+
+                instanceBadge.classList.add("op");
+                instanceBadge.setAttribute(
+                  "title",
+                  "Blog post author: " + instanceBadge.getAttribute("title")
+                );
+              }
+
+              commentsWrapper.innerHTML += DOMPurify.sanitize(comment.outerHTML);
+            });
+          }
+        });
+      }
+      document.getElementById("load-comment").addEventListener("click", loadComments);
+  </script>
+</section>
+
+
+    
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

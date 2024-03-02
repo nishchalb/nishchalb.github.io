@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>godot on Nishchal Bhandari</title>
+    <link>https://nishchalb.github.io/tags/godot/</link>
+    <description>Recent content in godot on Nishchal Bhandari</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 28 Feb 2024 21:18:17 -0600</lastBuildDate><atom:link href="https://nishchalb.github.io/tags/godot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Better Movement in Godot</title>
+      <link>https://nishchalb.github.io/posts/godot_building_better_movement/</link>
+      <pubDate>Wed, 28 Feb 2024 21:18:17 -0600</pubDate>
+      
+      <guid>https://nishchalb.github.io/posts/godot_building_better_movement/</guid>
+      <description>How do you create a responsive character controller? What does responsive even mean for this? What&amp;rsquo;s wrong with using standard physics equation for this? This blog post will cover these questions and how you how to build responsive movement in Godot.
+A lot of this post is inspired by great resources that you should also check out:
+Math for Game Programmers: Building a Better Jump Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations Game Feel, by Steve Swink Note that this post will demonstrate using Godot 3.</description>
+    </item>
+    
+  </channel>
+</rss>
