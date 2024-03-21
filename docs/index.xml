@@ -6,7 +6,17 @@
     <description>Recent content on Nishchal Bhandari</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Feb 2024 21:18:17 -0600</lastBuildDate><atom:link href="https://nishchalb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Mar 2024 16:57:11 -0500</lastBuildDate><atom:link href="https://nishchalb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Darktable: Painting With Light (or dodging and burning)</title>
+      <link>https://nishchalb.github.io/posts/dt_dodge_burn/</link>
+      <pubDate>Tue, 19 Mar 2024 16:57:11 -0500</pubDate>
+      
+      <guid>https://nishchalb.github.io/posts/dt_dodge_burn/</guid>
+      <description>The above image is alright, but it has a big issue: the water, which should be the main subject, does not stand out. Instead, the diffuse lighting of the image draws attention to the sky and rocks. How can we draw more focus to the waterfall?
+One technique we can use is &amp;ldquo;dodging and burning&amp;rdquo;, where we make selective tonal adjustments to parts of our image. In this post, I will show one such technique for doing this in darktable which I call &amp;ldquo;painting with light&amp;rdquo;.</description>
+    </item>
+    
     <item>
       <title>Building Better Movement in Godot</title>
       <link>https://nishchalb.github.io/posts/godot_building_better_movement/</link>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Darktable: Painting With Light (or dodging and burning)</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='blog, gokarna, hugo, darktable, photography'>
+
+    <meta property="og:url" content="https://nishchalb.github.io/posts/dt_dodge_burn/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Darktable: Painting With Light (or dodging and burning)">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://nishchalb.github.io/dt_dodge_burn/final.jpg">
+    <meta property="og:image:secure_url" content="https://nishchalb.github.io/dt_dodge_burn/final.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Darktable: Painting With Light (or dodging and burning)">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://nishchalb.github.io/posts/dt_dodge_burn/">
+    <meta property="twitter:url" content="https://nishchalb.github.io/posts/dt_dodge_burn/">
+    <meta name="twitter:image" content="https://nishchalb.github.io/dt_dodge_burn/final.jpg">
+
+    
+    <link rel="canonical" href="https://nishchalb.github.io/posts/dt_dodge_burn/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+    // css
+    <link rel="stylesheet" href="/css/custom.css">
+    <a rel="me" href="https://mastodon.gamedev.place/@nish"></a>
+
+    
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://nishchalb.github.io">
+                <img src='/linkedin.jpeg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://nishchalb.github.io">Nishchal Bhandari</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/nishchalb"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/nishchalb"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Darktable: Painting With Light (or dodging and burning)</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">March 19, 2024
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://nishchalb.github.io/tags/darktable">darktable</a></li>
+        
+            <li class="post-tag"><a href="https://nishchalb.github.io/tags/photography">photography</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><img src="/dt_dodge_burn/start.jpg" alt="Starting point image"></p>
+<p>The above image is alright, but it has a big issue: the water, which should be the main subject, does not stand out. Instead, the diffuse lighting of the image draws attention to the sky and rocks. How can we draw more focus to the waterfall?</p>
+<p>One technique we can use is &ldquo;dodging and burning&rdquo;, where we make selective tonal adjustments to parts of our image. In this post, I will show
+one such technique for doing this in darktable which I call &ldquo;painting with light&rdquo;. We will use darktable&rsquo;s scene referred workflow and powerful masking features to improve the focus of our image.</p>
+<h2 id="steps">Steps</h2>
+<p>The first step is to make sure you are using darktable&rsquo;s scene-referred workflow. You can check this in your darktable preferences:</p>
+<p><img src="/dt_dodge_burn/scene_ref.png" alt="Processing preferences in darktable"></p>
+<p>Note that there are two different scene-referred, and you can use whichever you prefer. The advantage of a scene-referred workflow is that
+the data in our image will be kept linear and unbounded in most of our processing pipeline, usually leading to more natural looking results.
+You can read more about the scene-referred workflow in the <a href="https://docs.darktable.org/usermanual/development/en/overview/workflow/process/#scene-referred-workflow-a-new-approach">darktable documentation.</a></p>
+<p>Now, let&rsquo;s move on to working on our starting point image.</p>
+<h3 id="sky">Sky</h3>
+<p>The first thing I would like to do is darken the sky so that it doesn&rsquo;t draw as much attention. There are many ways to do this in darktable,
+but I will use a new instance of the exposure tool with a simple gradient mask:</p>
+<p><img src="/dt_dodge_burn/sky.jpg" alt="Gradient mask">
+<img src="/dt_dodge_burn/step1.jpg" alt="Image after darkening sky"></p>
+<h3 id="burning">Burning</h3>
+<p>Next, I would like to darken the rocks to draw less attention to them. We can use another new instance of the exposure tool to do this. Now, let&rsquo;s get to painting!</p>
+<p>In the masking options for this new exposure instance, there is a brush masking option. <code>Ctrl</code> clicking this will let you paint multiple brush strokes easily.</p>
+<p><img src="/dt_dodge_burn/brush.png" alt="Brush masking tool"></p>
+<p><img src="/dt_dodge_burn/burn_brush.png" alt="Masked image for burning"></p>
+<p>You can use whatever size brush best fits the areas you want to darken. The <code>feathering radius</code> is incredibly helpful to make your selection follow the edges in the image.</p>
+<p>Notice that in my mask on the rocks, I include a parametric mask on the <code>Jz</code> channel to exclude the highlights. For this image, this lets me
+mostly darken the rocks but let some of their highlights still shine through. This is one of the main benefits of this technique: because you are
+using the simple exposure module (which just adds or subtracts exposure), you can entirely use masks to tightly control your effect (as opposed to using something like a contrast control with a fulcrum).</p>
+<p>With this, our image is already looking much improved.</p>
+<p><img src="/dt_dodge_burn/step2.jpg" alt="Image after darkening rocks"></p>
+<h3 id="dodging">Dodging</h3>
+<p>Lastly, we can apply a similar process to brighten the water in the scene to help draw more attention to it. Like darkening the rocks, we can use one more instance of the exposure tool and add a drawn mask with the brush option.</p>
+<p><img src="/dt_dodge_burn/dodge_brush.png" alt="Masked image for dodging"></p>
+<p>Notice that here, I reverse <code>Jz</code> channel mask I used for burning. I remove the darker values in the brushed selection to also add contrast during my brightening.</p>
+<p>And we&rsquo;re done! Here is our final image:
+<img src="/dt_dodge_burn/final.jpg" alt="Final image"></p>
+<p>And here is what we started with:
+<img src="/dt_dodge_burn/start.jpg" alt="Starting image"></p>
+<p>Mission accomplished! The water stands out a lot more now, and we just needed a few instances of the exposure tool. If you have more parts of your image that need separate adjustments, you can simply add more instances of the exposure tool to focus on each part.</p>
+<p>Here is another after/before example of one my photos where I also used this technique:</p>
+<p><img src="/dt_dodge_burn/after_before_2.jpg" alt="Additional example 1"></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+<section id="comments" class="comments">
+  <h2>Comments</h2>
+  <p>With an account on the Fediverse or Mastodon, you can respond to this <a href="https://mastodon.gamedev.place/@nish/111905486151790316">post</a>. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. Known non-private replies are displayed below.</p>
+
+  <p id="mastodon-comments-list"><button id="load-comment">Load comments</button></p>
+  <div id="comments-wrapper">
+    <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="https://mastodon.gamedev.place/@nish/111905486151790316">the original post</a> on Mastodon.</p></noscript>
+  </div>
+  <noscript>You need JavaScript to view the comments.</noscript>
+  <script src="/purify.min.js"></script>
+  <script type="text/javascript">
+    function escapeHtml(unsafe) {
+      return unsafe
+           .replace(/&/g, "&amp;")
+           .replace(/</g, "&lt;")
+           .replace(/>/g, "&gt;")
+           .replace(/"/g, "&quot;")
+           .replace(/'/g, "&#039;");
+    }
+    function emojify(input, emojis) {
+      let output = input;
+
+      emojis.forEach(emoji => {
+        let picture = document.createElement("picture");
+
+        let source = document.createElement("source");
+        source.setAttribute("srcset", escapeHtml(emoji.url));
+        source.setAttribute("media", "(prefers-reduced-motion: no-preference)");
+
+        let img = document.createElement("img");
+        img.className = "emoji";
+        img.setAttribute("src", escapeHtml(emoji.static_url));
+        img.setAttribute("alt", `:${ emoji.shortcode }:`);
+        img.setAttribute("title", `:${ emoji.shortcode }:`);
+
+        picture.appendChild(source);
+        picture.appendChild(img);
+
+        output = output.replace(`:${ emoji.shortcode }:`, picture.outerHTML);
+      });
+
+      return output;
+    }
+
+    function loadComments() {
+      let commentsWrapper = document.getElementById("comments-wrapper");
+      document.getElementById("load-comment").innerHTML = "Loading";
+      fetch('https://mastodon.gamedev.place/api/v1/statuses/111905486151790316/context')
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          let descendants = data['descendants'];
+          if(
+            descendants &&
+            Array.isArray(descendants) &&
+            descendants.length > 0
+          ) {
+            commentsWrapper.innerHTML = "";
+
+            descendants.forEach(function(status) {
+                console.log(descendants)
+              if( status.account.display_name.length > 0 ) {
+                status.account.display_name = escapeHtml(status.account.display_name);
+                status.account.display_name = emojify(status.account.display_name, status.account.emojis);
+              } else {
+                status.account.display_name = status.account.username;
+              };
+
+              let instance = "";
+              if( status.account.acct.includes("@") ) {
+                instance = status.account.acct.split("@")[1];
+              } else {
+                instance = "mastodon.gamedev.place";
+              }
+
+              const isReply = status.in_reply_to_id !== "111905486151790316";
+
+              let op = false;
+              if( status.account.acct == "nish" ) {
+                op = true;
+              }
+
+              status.content = emojify(status.content, status.emojis);
+
+              let avatarSource = document.createElement("source");
+              avatarSource.setAttribute("srcset", escapeHtml(status.account.avatar));
+              avatarSource.setAttribute("media", "(prefers-reduced-motion: no-preference)");
+
+              let avatarImg = document.createElement("img");
+              avatarImg.className = "mastodon-avatar";
+              avatarImg.setAttribute("src", escapeHtml(status.account.avatar_static));
+              avatarImg.setAttribute("alt", `@${ status.account.username }@${ instance } avatar`);
+              avatarImg.setAttribute("width", "60px");
+
+              let avatarPicture = document.createElement("picture");
+              avatarPicture.appendChild(avatarSource);
+              avatarPicture.appendChild(avatarImg);
+
+              let avatar = document.createElement("a");
+              avatar.className = "avatar-link";
+              avatar.setAttribute("href", status.account.url);
+              avatar.setAttribute("rel", "external nofollow");
+              avatar.setAttribute("title", `View profile at @${ status.account.username }@${ instance }`);
+              avatar.appendChild(avatarPicture);
+
+              let instanceBadge = document.createElement("a");
+              instanceBadge.className = "instance";
+              instanceBadge.setAttribute("href", status.account.url);
+              instanceBadge.setAttribute("title", `@${ status.account.username }@${ instance }`);
+              instanceBadge.setAttribute("rel", "external nofollow");
+              instanceBadge.textContent = instance;
+
+              let display = document.createElement("span");
+              display.className = "display";
+              display.setAttribute("itemprop", "author");
+              display.setAttribute("itemtype", "http://schema.org/Person");
+              display.innerHTML = status.account.display_name;
+
+              let header = document.createElement("header");
+              header.className = "author";
+              header.appendChild(display);
+              header.appendChild(instanceBadge);
+
+              let permalink = document.createElement("a");
+              permalink.setAttribute("href", status.url);
+              permalink.setAttribute("itemprop", "url");
+              permalink.setAttribute("title", `View comment at ${ instance }`);
+              permalink.setAttribute("rel", "external nofollow");
+              permalink.textContent = new Date( status.created_at ).toLocaleString('en-US', {
+                dateStyle: "long",
+                timeStyle: "short",
+              });
+
+              let timestamp = document.createElement("time");
+              timestamp.setAttribute("datetime", status.created_at);
+              timestamp.appendChild(permalink);
+
+              let main = document.createElement("main");
+              main.setAttribute("itemprop", "text");
+              main.innerHTML = status.content;
+
+              let interactions = document.createElement("footer");
+              if(status.favourites_count > 0) {
+                let faves = document.createElement("a");
+                faves.className = "faves";
+                faves.setAttribute("href", `${ status.url }/favourites`);
+                faves.setAttribute("title", `Favorites from ${ instance }`);
+                faves.textContent = status.favourites_count;
+
+                interactions.appendChild(faves);
+              }
+
+              let comment = document.createElement("article");
+              comment.id = `comment-${ status.id }`;
+              comment.className = isReply ? "mastodon-comment comment-reply" : "mastodon-comment";
+              comment.setAttribute("itemprop", "comment");
+              comment.setAttribute("itemtype", "http://schema.org/Comment");
+              comment.appendChild(avatar);
+              comment.appendChild(header);
+              comment.appendChild(timestamp);
+              comment.appendChild(main);
+              comment.appendChild(interactions);
+
+              if(op === true) {
+                comment.classList.add("op");
+
+                avatar.classList.add("op");
+                avatar.setAttribute(
+                  "title",
+                  "Blog post author; " + avatar.getAttribute("title")
+                );
+
+                instanceBadge.classList.add("op");
+                instanceBadge.setAttribute(
+                  "title",
+                  "Blog post author: " + instanceBadge.getAttribute("title")
+                );
+              }
+
+              commentsWrapper.innerHTML += DOMPurify.sanitize(comment.outerHTML);
+            });
+          }
+        });
+      }
+      document.getElementById("load-comment").addEventListener("click", loadComments);
+  </script>
+</section>
+
+
+    
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>
