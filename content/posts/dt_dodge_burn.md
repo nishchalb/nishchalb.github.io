@@ -8,7 +8,7 @@ image: "/dt_dodge_burn/final.jpg"
 comments:
   host: mastodon.gamedev.place
   username: nish
-  id: 111905486151790316
+  id: 112130987837845513
 ---
 
 ![Starting point image](/dt_dodge_burn/start.jpg)
