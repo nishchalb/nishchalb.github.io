@@ -448,11 +448,11 @@ value to put the center of the eyebrows at the desired <code>y</code> position. 
 
 <section id="comments" class="comments">
   <h2>Comments</h2>
-  <p>With an account on the Fediverse or Mastodon, you can respond to this <a href="https://mastodon.gamedev.place/@nish/112027620869024106">post</a>. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. Known non-private replies are displayed below.</p>
+  <p>With an account on the Fediverse or Mastodon, you can respond to this <a href="https://mastodon.gamedev.place/@nish/112521915548290854">post</a>. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. Known non-private replies are displayed below.</p>
 
   <p id="mastodon-comments-list"><button id="load-comment">Load comments</button></p>
   <div id="comments-wrapper">
-    <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="https://mastodon.gamedev.place/@nish/112027620869024106">the original post</a> on Mastodon.</p></noscript>
+    <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="https://mastodon.gamedev.place/@nish/112521915548290854">the original post</a> on Mastodon.</p></noscript>
   </div>
   <noscript>You need JavaScript to view the comments.</noscript>
   <script src="/purify.min.js"></script>
@@ -493,7 +493,7 @@ value to put the center of the eyebrows at the desired <code>y</code> position. 
     function loadComments() {
       let commentsWrapper = document.getElementById("comments-wrapper");
       document.getElementById("load-comment").innerHTML = "Loading";
-      fetch('https://mastodon.gamedev.place/api/v1/statuses/112027620869024106/context')
+      fetch('https://mastodon.gamedev.place/api/v1/statuses/112521915548290854/context')
         .then(function(response) {
           return response.json();
         })
@@ -522,7 +522,7 @@ value to put the center of the eyebrows at the desired <code>y</code> position. 
                 instance = "mastodon.gamedev.place";
               }
 
-              const isReply = status.in_reply_to_id !== "112027620869024106";
+              const isReply = status.in_reply_to_id !== "112521915548290854";
 
               let op = false;
               if( status.account.acct == "nish" ) {
