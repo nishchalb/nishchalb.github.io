@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Procedural Eyebrow Shader in Godot</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='blog, gokarna, hugo, godot, gamedev'>
+
+    <meta property="og:url" content="https://nishchalb.github.io/posts/eyebrow_shader/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Procedural Eyebrow Shader in Godot">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://nishchalb.github.io/eyebrow_shader/title.png">
+    <meta property="og:image:secure_url" content="https://nishchalb.github.io/eyebrow_shader/title.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Procedural Eyebrow Shader in Godot">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://nishchalb.github.io/posts/eyebrow_shader/">
+    <meta property="twitter:url" content="https://nishchalb.github.io/posts/eyebrow_shader/">
+    <meta name="twitter:image" content="https://nishchalb.github.io/eyebrow_shader/title.png">
+
+    
+    <link rel="canonical" href="https://nishchalb.github.io/posts/eyebrow_shader/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+    // css
+    <link rel="stylesheet" href="/css/custom.css">
+    <a rel="me" href="https://mastodon.gamedev.place/@nish"></a>
+
+    
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://nishchalb.github.io">
+                <img src='/linkedin.jpeg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://nishchalb.github.io">Nishchal Bhandari</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/nishchalb"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://nishchalb.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/nishchalb"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://nishchalb.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Procedural Eyebrow Shader in Godot</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">May 25, 2024
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://nishchalb.github.io/tags/godot">godot</a></li>
+        
+            <li class="post-tag"><a href="https://nishchalb.github.io/tags/gamedev">gamedev</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Shaders can be a mysterious topic for game developers not yet familiar with them. And seeing some of the wild things people can create
+with them (for example, on <a href="https://www.shadertoy.com/">Shadertoy</a>), they can even be ominous. It&rsquo;s a whole new language and framework you have to learn in addition to Godot!</p>
+<p>In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for <a href="https://nishb.itch.io/triedge-hack">TriEdge Hack</a> to help those who are learning about shaders but aren&rsquo;t sure of the process of creating one from scratch. Specifically, we will look at how to do this in a Godot 2D environment. Here is what we want to accomplish:</p>
+<center>
+  <video width='
+    
+      100%
+    '
+  controls>
+    <source src="/eyebrow_shader/final.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</center>
+
+<p>This is a nice shader to create as a beginner because it does not depend on time. Let&rsquo;s get started!</p>
+<h1 id="node-setup">Node setup</h1>
+<p>In my setup, I use two Sprite2D nodes: One for the white part of the eyes, and the other for the pupils. I do this for TriEdge Hack so I can animate the pupils separately, though for this tutorial you could also use just a single image like this one:</p>
+<p><img src="/eyebrow_shader/eyes.png" alt="An image of the node inspector after our steps.">
+<!-- raw HTML omitted --></p>
+<p>It&rsquo;s important for the image to be symmetric for our shader, so if you are using your own image make sure each eye is spaced accordingly.</p>
+<h1 id="first-steps">First steps</h1>
+<p>I&rsquo;ll cover some shader basics as we go, but for those who are looking for a more comprehensive resource I highly recommend <a href="https://thebookofshaders.com/">The Book of Shaders</a> and the official documentation&rsquo;s <a href="https://docs.godotengine.org/en/stable/tutorials/shaders/your_first_shader/your_first_2d_shader.html">Your first 2D shader</a>.</p>
+<p>For this tutorial, we are going to create a <em>fragment</em> shader. This kind of shader runs on every pixel of your sprite and determines what color it is.
+Let&rsquo;s attach a shader to our sprite node now. Select your sprite, and under the inspector find the <code>Material</code> property in the <code>CanvasItem -&gt; Material</code> group. Give it a <code>New ShaderMaterial</code>. Under that material, give it a <code>New Shader</code>. You should end up with something like this:</p>
+<p><img src="/eyebrow_shader/node_inspect_shader.png" alt="An image of the node inspector after our steps."></p>
+<p>Once you click on the circled <code>Shader</code>, the Shader text editor should open and we can start experimenting! Let&rsquo;s start with the beginner shader from the Godot tutorial, and build up to the eyebrow shader.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>shader_type canvas_item;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> fragment(){
+</span></span><span style="display:flex;"><span>  COLOR <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec4</span>(<span style="color:#ae81ff">0.4</span>, <span style="color:#ae81ff">0.6</span>, <span style="color:#ae81ff">0.9</span>, <span style="color:#ae81ff">1.0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The first line just tells Godot what kind of shader we are writing. What we really want to focus on is <code>fragment()</code>, which is a special function
+we can overwrite to set the color of individual pixels by setting the <code>COLOR</code>. For every pixel in our sprite (even the transparent ones), the shader tells that pixel to be this color.</p>
+<p>At this point your sprite containing the eye texture should just look like a blue rectangle. Next, let&rsquo;s look at some other useful building blocks before building our final shader.</p>
+<h1 id="building-blocks">Building Blocks</h1>
+<p>One of the things that can be intimidating about shaders is the <a href="https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/shading_language.html">many functions available</a> for you to use. We&rsquo;ll just focus on the ones we need.</p>
+<p>We don&rsquo;t have usual print statements to debug our shader. Instead, we can use the <code>COLOR</code> output as we are constructing our shader to visualize what is going on. Let&rsquo;s use this to understand our building blocks.</p>
+<h2 id="uv">UV</h2>
+<p>Our current shader is blue everywhere. How can we adjust the shader&rsquo;s behavior depending on which pixel it&rsquo;s running on? That&rsquo;s where UV comes in.
+UV is a normalized coordinate system we can use in our shader. The <code>U</code> coordinate corresponds to the <code>X</code> coordinate of our image, but instead of being expressed in number of pixels, it&rsquo;s expressed in a range from <code>0</code> to <code>1</code>. Similarly, <code>V</code> corresponds with <code>Y</code>.</p>
+<p>If we update our shader code to use this snippet from the Godot tutorial, we can visualize what&rsquo;s happening to help understand:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>shader_type canvas_item;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> fragment() {
+</span></span><span style="display:flex;"><span>  COLOR <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec4</span>(UV, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1.0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Note that we are taking advantage of the fact that shader vector constructors are &ldquo;smart&rdquo;. The <code>vec4</code> we construct is shorthand for <code>vec4(UV.x, UV.y, 0.5, 1.0)</code></p>
+</blockquote>
+<p><img src="/eyebrow_shader/uv.png" alt="How our image looks with the UV shader."></p>
+<p>In this example, the red channel of our color is set based on <code>U</code>, while the green channel is based on <code>V</code>. We can see the image getting redder as <code>U</code> increases further right in the image. Likewise, we can see things get greener as <code>V</code> increases. At the bottom right of the image, both <code>U</code> and <code>V</code> are large, so we have a mix of red and green to give us yellow.</p>
+<h3 id="transforming-uvs">Transforming UVs</h3>
+<p>One very handy trick for UVs is transforming them using shifts and scaling. This can make the math easier for some tasks. For example, what if we want to adjust our current shader to fade out on the left and right sides?</p>
+<p>We need a float to adjust our opacity, and a function that increases from <code>[0.0, 0.5]</code> and then decreases from <code>[0.5, 1.0]</code> (to correspond with our <code>UV.x</code> coordinate). Symmetry around <code>0.5</code> sounds annoying, it would be nice if we could use symmetry around zero&hellip;</p>
+<p>Well, we can! Let&rsquo;s create a variable to store our &ldquo;shifted&rdquo; UV: <code>vec2 UV2 = vec2(UV.x - 0.5, UV.y);</code></p>
+<p>A symmetric function we could use with it is absolute value <code>abs</code>. This gives us an output that&rsquo;s larger on the edges and <code>0</code> at <code>U=0</code>, so we can do <code>1 - abs(UV2.x)</code> as our function for the alpha channel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>shader_type canvas_item;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> fragment() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">vec2</span> UV2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec2</span>(UV.x <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.5</span>, UV.y);
+</span></span><span style="display:flex;"><span>  COLOR <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec4</span>(UV, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> abs(UV2.x));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>If you look at the editor output for this shader, you&rsquo;ll see that the edges are only semi-transparent. This is because our new UV goes from <code>-0.5</code> to <code>0.5</code>. We need to scale it to the range <code>[-1, 1]</code>: <code>vec2 UV2 = vec2(2.0*(UV.x - 0.5), UV.y);</code>. Now, our colors fade in and out:</p>
+<p><img src="/eyebrow_shader/uv_fade.png" alt="Our adjusted UV shader with the edges fading."></p>
+<h2 id="texture">TEXTURE</h2>
+<p>We&rsquo;re going to need access to the original opacity of our texture. To do this in our shader, we can use:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>COLOR <span style="color:#f92672">=</span> texture(TEXTURE, UV);
+</span></span></code></pre></div><p>If we make this the last line in our shader, you&rsquo;ll see that it simply leaves the image unchanged since the shader is just reading and outputting the texture unchanged.</p>
+<h2 id="step">Step</h2>
+<p>This appropriately named function will help us <code>step</code> up our shader game! The <code>float</code> version of it is simple:</p>
+<pre tabindex="0"><code>step(float a, float b): If a &gt; b, return 1.0 else return 0.0
+</code></pre><p>To visualize what it&rsquo;s doing, let&rsquo;s update our shader to output this <code>COLOR</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>shader_type canvas_item;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> fragment() {
+</span></span><span style="display:flex;"><span>  COLOR.rgb <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec3</span>(step(<span style="color:#ae81ff">0.5</span>, UV.x));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="/eyebrow_shader/step.png" alt="How our image looks with the step shader."></p>
+<p>We can see how how the <code>step</code> function varies with our <code>U</code> coordinate. Our <code>RGB</code> is black <code>(0,0,0)</code> when <code>U &lt;= 0.5</code>, and then becomes white <code>(1,1,1)</code> when <code>U &gt; 0.5</code>.</p>
+<h2 id="shader-params">Shader Params</h2>
+<p>For our final building block, we are going to use Shader params. This is a nifty feature in Godot shaders to let us control our shader parameters from the editor or regular Godot code. This can be helpful for debugging how a parameter behaves, and for controlling it via code. Let&rsquo;s update our <code>step</code> shader to use a shader param:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>shader_type canvas_item;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uniform</span> <span style="color:#66d9ef">float</span> fac <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> fragment() {
+</span></span><span style="display:flex;"><span>  COLOR.rgb <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec3</span>(step(fac, UV.x));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>uniform float fac = 0.5</code> will expose the shader param to our editor:</p>
+<p><img src="/eyebrow_shader/param.png" alt="The shader param &amp;lsquo;fac&amp;rsquo; exposed in the editor."></p>
+<p>Now, we can slide around the value of <code>fac</code> and immediately see how our shader responds!</p>
+<center>
+  <video width='
+    
+      100%
+    '
+  controls>
+    <source src="/eyebrow_shader/param.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</center>
+
+<h1 id="putting-it-all-together">Putting it all together</h1>
+<p>We have everything we need to build our eyebrow shader, but how should we approach actually building it?
+First, let&rsquo;s think of what we are actually trying to accomplish for one eye:</p>
+<p><img src="/eyebrow_shader/eye1.png" alt="Diagram of what we are trying to accomplish."></p>
+<p>We want to have a line (that we can adjust) where everything above the line is transparent (i.e. we want to set the opacity of the pixels in the red shaded region to <code>0</code> to form our &ldquo;eyebrow&rdquo;). The <code>step</code> function is perfect for this.
+Let&rsquo;s take a simple line without an offset, putting <code>u</code> and <code>v</code> on the same side of the equation:</p>
+<p>$$mu-v = 0$$</p>
+<p>The two sides of this equation give us the two input arguments to our step function. If the left hand side is smaller than zero, then we make the pixel transparent.
+$m$ will correspond to our shader param <code>fac</code>, so our shader code looks like</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>shader_type canvas_item;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uniform</span> <span style="color:#66d9ef">float</span> fac <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> fragment() {
+</span></span><span style="display:flex;"><span>  COLOR <span style="color:#f92672">=</span> texture(TEXTURE, UV); 
+</span></span><span style="display:flex;"><span>  COLOR.a <span style="color:#f92672">=</span> COLOR.a <span style="color:#f92672">*</span> step(fac<span style="color:#f92672">*</span>UV.x<span style="color:#f92672">-</span>UV.y, <span style="color:#ae81ff">0.0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>We also multiply by <code>COLOR.a</code> so pixels that were originally transparent remain so</p>
+</blockquote>
+<p>We can adjust the <code>fac</code> shader param to control the slope and slope and see that it works as intended:
+<center>
+  <video width='
+    
+      100%
+    '
+  controls>
+    <source src="/eyebrow_shader/line1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</center>
+</p>
+<h2 id="making-it-symmetric">Making it symmetric</h2>
+<p>We were only considering a single eye to make the initial reasoning simpler. Now, we need to adjust our shader to use the same angle for both eyes.
+For our end result we want something like $y=m*abs(x)$ (which looks way too suspiciously like angry eyebrows)</p>
+<p><img src="/eyebrow_shader/abs_x.png" alt="Plot of the above equation for m=0.5"></p>
+<p>We can use our UV shifting trick to move our <code>U</code> values to the <code>[-0.5, 0.5]</code> range, and update our shader to use the absolute <code>UV2.x</code> value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>shader_type canvas_item;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uniform</span> <span style="color:#66d9ef">float</span> fac <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> fragment() {
+</span></span><span style="display:flex;"><span>  COLOR <span style="color:#f92672">=</span> texture(TEXTURE, UV); 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">vec2</span> UV2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec2</span>(UV.x <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.5</span>, UV.y);
+</span></span><span style="display:flex;"><span>  COLOR.a <span style="color:#f92672">=</span> COLOR.a <span style="color:#f92672">*</span> step(fac<span style="color:#f92672">*</span>abs(UV2.x)<span style="color:#f92672">-</span>UV2.y, <span style="color:#ae81ff">0.0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>But, if you adjust the <code>fac</code> shader param for this shader, you will notice a pretty large issue. Negative <code>fac</code> values will give &ldquo;sad&rdquo; eyebrows, but positive <code>fac</code> values don&rsquo;t appear to do anything. What&rsquo;s going on?</p>
+<p>Up until now we&rsquo;ve ignored the offset of our &ldquo;eyebrow line&rdquo;, but now we&rsquo;ll need to address it. As <code>fac</code> changes, we&rsquo;ll need to adjust the offset
+value to put the center of the eyebrows at the desired <code>y</code> position. The exact number will depend on how you want the end result to look. In this case, I like using <code>abs(fac)</code> for the offset. Adding that offset to our line equation gives our final shader:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-glsl" data-lang="glsl"><span style="display:flex;"><span>shader_type canvas_item;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uniform</span> <span style="color:#66d9ef">float</span> fac <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> fragment() {
+</span></span><span style="display:flex;"><span>  COLOR <span style="color:#f92672">=</span> texture(TEXTURE, UV); 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">vec2</span> UV2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">vec2</span>(UV.x <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.5</span>, UV.y);
+</span></span><span style="display:flex;"><span>  COLOR.a <span style="color:#f92672">=</span> COLOR.a <span style="color:#f92672">*</span> step(fac<span style="color:#f92672">*-</span><span style="color:#ae81ff">1.0</span><span style="color:#f92672">*</span>abs(UV2.x)<span style="color:#f92672">-</span>UV2.y<span style="color:#f92672">+</span>abs(fac), <span style="color:#ae81ff">0.0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It&rsquo;s very simple, but can add a lot of extra expressiveness to a game. And it saves us time and space compared to creating different sprites for each desired variation. Here&rsquo;s how the final result looks:</p>
+<center>
+  <video width='
+    
+      100%
+    '
+  controls>
+    <source src="/eyebrow_shader/final.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</center>
+
+<p>Looking pretty sad at the end! If you want to randomly set the shader parameter at runtime, it&rsquo;s easy to do so. Just attach a script to the same node as your shader:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript" data-lang="gdscript"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>material<span style="color:#f92672">.</span>set_shader_param(<span style="color:#e6db74">&#34;fac&#34;</span>, rand_range(<span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>))
+</span></span></code></pre></div><p>You could even tween the shader param to animate animate between happy and sad eyebrows!</p>
+<p>Give <a href="https://nishb.itch.io/triedge-hack">TriEdge Hack</a> a try to see it (and some other fun shaders) in action.
+<img src="/eyebrow_shader/triedge.png" alt="TriEdge Hack main screen"></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#node-setup">Node setup</a></li>
+    <li><a href="#first-steps">First steps</a></li>
+    <li><a href="#building-blocks">Building Blocks</a>
+      <ul>
+        <li><a href="#uv">UV</a>
+          <ul>
+            <li><a href="#transforming-uvs">Transforming UVs</a></li>
+          </ul>
+        </li>
+        <li><a href="#texture">TEXTURE</a></li>
+        <li><a href="#step">Step</a></li>
+        <li><a href="#shader-params">Shader Params</a></li>
+      </ul>
+    </li>
+    <li><a href="#putting-it-all-together">Putting it all together</a>
+      <ul>
+        <li><a href="#making-it-symmetric">Making it symmetric</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+<section id="comments" class="comments">
+  <h2>Comments</h2>
+  <p>With an account on the Fediverse or Mastodon, you can respond to this <a href="https://mastodon.gamedev.place/@nish/112027620869024106">post</a>. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. Known non-private replies are displayed below.</p>
+
+  <p id="mastodon-comments-list"><button id="load-comment">Load comments</button></p>
+  <div id="comments-wrapper">
+    <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="https://mastodon.gamedev.place/@nish/112027620869024106">the original post</a> on Mastodon.</p></noscript>
+  </div>
+  <noscript>You need JavaScript to view the comments.</noscript>
+  <script src="/purify.min.js"></script>
+  <script type="text/javascript">
+    function escapeHtml(unsafe) {
+      return unsafe
+           .replace(/&/g, "&amp;")
+           .replace(/</g, "&lt;")
+           .replace(/>/g, "&gt;")
+           .replace(/"/g, "&quot;")
+           .replace(/'/g, "&#039;");
+    }
+    function emojify(input, emojis) {
+      let output = input;
+
+      emojis.forEach(emoji => {
+        let picture = document.createElement("picture");
+
+        let source = document.createElement("source");
+        source.setAttribute("srcset", escapeHtml(emoji.url));
+        source.setAttribute("media", "(prefers-reduced-motion: no-preference)");
+
+        let img = document.createElement("img");
+        img.className = "emoji";
+        img.setAttribute("src", escapeHtml(emoji.static_url));
+        img.setAttribute("alt", `:${ emoji.shortcode }:`);
+        img.setAttribute("title", `:${ emoji.shortcode }:`);
+
+        picture.appendChild(source);
+        picture.appendChild(img);
+
+        output = output.replace(`:${ emoji.shortcode }:`, picture.outerHTML);
+      });
+
+      return output;
+    }
+
+    function loadComments() {
+      let commentsWrapper = document.getElementById("comments-wrapper");
+      document.getElementById("load-comment").innerHTML = "Loading";
+      fetch('https://mastodon.gamedev.place/api/v1/statuses/112027620869024106/context')
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          let descendants = data['descendants'];
+          if(
+            descendants &&
+            Array.isArray(descendants) &&
+            descendants.length > 0
+          ) {
+            commentsWrapper.innerHTML = "";
+
+            descendants.forEach(function(status) {
+                console.log(descendants)
+              if( status.account.display_name.length > 0 ) {
+                status.account.display_name = escapeHtml(status.account.display_name);
+                status.account.display_name = emojify(status.account.display_name, status.account.emojis);
+              } else {
+                status.account.display_name = status.account.username;
+              };
+
+              let instance = "";
+              if( status.account.acct.includes("@") ) {
+                instance = status.account.acct.split("@")[1];
+              } else {
+                instance = "mastodon.gamedev.place";
+              }
+
+              const isReply = status.in_reply_to_id !== "112027620869024106";
+
+              let op = false;
+              if( status.account.acct == "nish" ) {
+                op = true;
+              }
+
+              status.content = emojify(status.content, status.emojis);
+
+              let avatarSource = document.createElement("source");
+              avatarSource.setAttribute("srcset", escapeHtml(status.account.avatar));
+              avatarSource.setAttribute("media", "(prefers-reduced-motion: no-preference)");
+
+              let avatarImg = document.createElement("img");
+              avatarImg.className = "mastodon-avatar";
+              avatarImg.setAttribute("src", escapeHtml(status.account.avatar_static));
+              avatarImg.setAttribute("alt", `@${ status.account.username }@${ instance } avatar`);
+              avatarImg.setAttribute("width", "60px");
+
+              let avatarPicture = document.createElement("picture");
+              avatarPicture.appendChild(avatarSource);
+              avatarPicture.appendChild(avatarImg);
+
+              let avatar = document.createElement("a");
+              avatar.className = "avatar-link";
+              avatar.setAttribute("href", status.account.url);
+              avatar.setAttribute("rel", "external nofollow");
+              avatar.setAttribute("title", `View profile at @${ status.account.username }@${ instance }`);
+              avatar.appendChild(avatarPicture);
+
+              let instanceBadge = document.createElement("a");
+              instanceBadge.className = "instance";
+              instanceBadge.setAttribute("href", status.account.url);
+              instanceBadge.setAttribute("title", `@${ status.account.username }@${ instance }`);
+              instanceBadge.setAttribute("rel", "external nofollow");
+              instanceBadge.textContent = instance;
+
+              let display = document.createElement("span");
+              display.className = "display";
+              display.setAttribute("itemprop", "author");
+              display.setAttribute("itemtype", "http://schema.org/Person");
+              display.innerHTML = status.account.display_name;
+
+              let header = document.createElement("header");
+              header.className = "author";
+              header.appendChild(display);
+              header.appendChild(instanceBadge);
+
+              let permalink = document.createElement("a");
+              permalink.setAttribute("href", status.url);
+              permalink.setAttribute("itemprop", "url");
+              permalink.setAttribute("title", `View comment at ${ instance }`);
+              permalink.setAttribute("rel", "external nofollow");
+              permalink.textContent = new Date( status.created_at ).toLocaleString('en-US', {
+                dateStyle: "long",
+                timeStyle: "short",
+              });
+
+              let timestamp = document.createElement("time");
+              timestamp.setAttribute("datetime", status.created_at);
+              timestamp.appendChild(permalink);
+
+              let main = document.createElement("main");
+              main.setAttribute("itemprop", "text");
+              main.innerHTML = status.content;
+
+              let interactions = document.createElement("footer");
+              if(status.favourites_count > 0) {
+                let faves = document.createElement("a");
+                faves.className = "faves";
+                faves.setAttribute("href", `${ status.url }/favourites`);
+                faves.setAttribute("title", `Favorites from ${ instance }`);
+                faves.textContent = status.favourites_count;
+
+                interactions.appendChild(faves);
+              }
+
+              let comment = document.createElement("article");
+              comment.id = `comment-${ status.id }`;
+              comment.className = isReply ? "mastodon-comment comment-reply" : "mastodon-comment";
+              comment.setAttribute("itemprop", "comment");
+              comment.setAttribute("itemtype", "http://schema.org/Comment");
+              comment.appendChild(avatar);
+              comment.appendChild(header);
+              comment.appendChild(timestamp);
+              comment.appendChild(main);
+              comment.appendChild(interactions);
+
+              if(op === true) {
+                comment.classList.add("op");
+
+                avatar.classList.add("op");
+                avatar.setAttribute(
+                  "title",
+                  "Blog post author; " + avatar.getAttribute("title")
+                );
+
+                instanceBadge.classList.add("op");
+                instanceBadge.setAttribute(
+                  "title",
+                  "Blog post author: " + instanceBadge.getAttribute("title")
+                );
+              }
+
+              commentsWrapper.innerHTML += DOMPurify.sanitize(comment.outerHTML);
+            });
+          }
+        });
+      }
+      document.getElementById("load-comment").addEventListener("click", loadComments);
+  </script>
+</section>
+
+
+    
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

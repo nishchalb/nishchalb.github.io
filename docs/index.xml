@@ -6,7 +6,17 @@
     <description>Recent content on Nishchal Bhandari</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Mar 2024 16:57:11 -0500</lastBuildDate><atom:link href="https://nishchalb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 May 2024 12:40:46 -0500</lastBuildDate><atom:link href="https://nishchalb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Procedural Eyebrow Shader in Godot</title>
+      <link>https://nishchalb.github.io/posts/eyebrow_shader/</link>
+      <pubDate>Sat, 25 May 2024 12:40:46 -0500</pubDate>
+      
+      <guid>https://nishchalb.github.io/posts/eyebrow_shader/</guid>
+      <description>Shaders can be a mysterious topic for game developers not yet familiar with them. And seeing some of the wild things people can create with them (for example, on Shadertoy), they can even be ominous. It&amp;rsquo;s a whole new language and framework you have to learn in addition to Godot!
+In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for TriEdge Hack to help those who are learning about shaders but aren&amp;rsquo;t sure of the process of creating one from scratch.</description>
+    </item>
+    
     <item>
       <title>Darktable: Painting With Light (or dodging and burning)</title>
       <link>https://nishchalb.github.io/posts/dt_dodge_burn/</link>
