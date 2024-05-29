@@ -25,15 +25,15 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Procedural Eyebrow Shader in Godot">
     <meta property="og:description" content="">
-    <meta property="og:image" content="https://nishchalb.github.io/eyebrow_shader/title.png">
-    <meta property="og:image:secure_url" content="https://nishchalb.github.io/eyebrow_shader/title.png">
+    <meta property="og:image" content="https://nishchalb.github.io/eyebrow_shader/eyebrow_all.png">
+    <meta property="og:image:secure_url" content="https://nishchalb.github.io/eyebrow_shader/eyebrow_all.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Procedural Eyebrow Shader in Godot">
     <meta name="twitter:description" content="">
     <meta property="twitter:domain" content="https://nishchalb.github.io/posts/eyebrow_shader/">
     <meta property="twitter:url" content="https://nishchalb.github.io/posts/eyebrow_shader/">
-    <meta name="twitter:image" content="https://nishchalb.github.io/eyebrow_shader/title.png">
+    <meta name="twitter:image" content="https://nishchalb.github.io/eyebrow_shader/eyebrow_all.png">
 
     
     <link rel="canonical" href="https://nishchalb.github.io/posts/eyebrow_shader/" />
@@ -196,7 +196,9 @@
         <p>
             <p>Shaders can be a mysterious topic for game developers not yet familiar with them. And seeing some of the wild things people can create
 with them (for example, on <a href="https://www.shadertoy.com/">Shadertoy</a>), they can even be ominous. It&rsquo;s a whole new language and framework you have to learn in addition to Godot!</p>
-<p>In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for <a href="https://nishb.itch.io/triedge-hack">TriEdge Hack</a> to help those who are learning about shaders but aren&rsquo;t sure of the process of creating one from scratch. Specifically, we will look at how to do this in a Godot 2D environment. Here is what we want to accomplish:</p>
+<p>In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for <a href="https://nishb.itch.io/triedge-hack">TriEdge Hack</a> to help those who are learning about shaders but aren&rsquo;t sure of the process of creating one from scratch. Specifically, we will look at how to do this in a Godot 2D environment.</p>
+<p><img src="/eyebrow_shader/eyebrow_all.png" alt="Example eyebrows from TriEdge Hack"></p>
+<p>Here is what we want to accomplish:</p>
 <center>
   <video width='
     
@@ -211,8 +213,7 @@ with them (for example, on <a href="https://www.shadertoy.com/">Shadertoy</a>), 
 <p>This is a nice shader to create as a beginner because it does not depend on time. Let&rsquo;s get started!</p>
 <h1 id="node-setup">Node setup</h1>
 <p>In my setup, I use two Sprite2D nodes: One for the white part of the eyes, and the other for the pupils. I do this for TriEdge Hack so I can animate the pupils separately, though for this tutorial you could also use just a single image like this one:</p>
-<p><img src="/eyebrow_shader/eyes.png" alt="An image of the node inspector after our steps.">
-<!-- raw HTML omitted --></p>
+<p><img src="/eyebrow_shader/eyes.png" alt="An image of the node inspector after our steps."></p>
 <p>It&rsquo;s important for the image to be symmetric for our shader, so if you are using your own image make sure each eye is spaced accordingly.</p>
 <h1 id="first-steps">First steps</h1>
 <p>I&rsquo;ll cover some shader basics as we go, but for those who are looking for a more comprehensive resource I highly recommend <a href="https://thebookofshaders.com/">The Book of Shaders</a> and the official documentation&rsquo;s <a href="https://docs.godotengine.org/en/stable/tutorials/shaders/your_first_shader/your_first_2d_shader.html">Your first 2D shader</a>.</p>

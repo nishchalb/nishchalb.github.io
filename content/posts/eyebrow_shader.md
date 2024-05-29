@@ -5,7 +5,7 @@ draft: false
 tags: ["godot", "gamedev"]
 type: "post"
 showTableOfContents: true
-image: "/eyebrow_shader/title.png"
+image: "/eyebrow_shader/eyebrow_all.png"
 katex: true
 markup: 'mmark'
 comments:
@@ -18,7 +18,12 @@ comments:
 Shaders can be a mysterious topic for game developers not yet familiar with them. And seeing some of the wild things people can create
 with them (for example, on [Shadertoy](https://www.shadertoy.com/)), they can even be ominous. It's a whole new language and framework you have to learn in addition to Godot!
 
-In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for [TriEdge Hack](https://nishb.itch.io/triedge-hack) to help those who are learning about shaders but aren't sure of the process of creating one from scratch. Specifically, we will look at how to do this in a Godot 2D environment. Here is what we want to accomplish:
+In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for [TriEdge Hack](https://nishb.itch.io/triedge-hack) to help those who are learning about shaders but aren't sure of the process of creating one from scratch. Specifically, we will look at how to do this in a Godot 2D environment. 
+
+![Example eyebrows from TriEdge Hack](/eyebrow_shader/eyebrow_all.png)
+
+
+Here is what we want to accomplish:
 
 {{< video src="/eyebrow_shader/final.mp4" >}}
 
@@ -29,7 +34,6 @@ This is a nice shader to create as a beginner because it does not depend on time
 In my setup, I use two Sprite2D nodes: One for the white part of the eyes, and the other for the pupils. I do this for TriEdge Hack so I can animate the pupils separately, though for this tutorial you could also use just a single image like this one:
 
 ![An image of the node inspector after our steps.](/eyebrow_shader/eyes.png)
-<img src="/eyebrow_shader/eyes.png" alt="drawing" width="800"/>
 
 It's important for the image to be symmetric for our shader, so if you are using your own image make sure each eye is spaced accordingly. 
 
