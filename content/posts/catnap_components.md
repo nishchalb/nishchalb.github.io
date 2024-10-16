@@ -10,7 +10,7 @@ markup: 'mmark'
 comments:
   host: mastodon.gamedev.place
   username: nish
-  id: 112027620869024106
+  id: 113314837417924750
 ---
 
 
@@ -151,7 +151,7 @@ It's not intended to be used as a general health system, so it doesn't contain a
 
 ![Health Bar node structure](/catnap_components/healthbar_nodes.jpg)
 
-In its node tree, it most notable contains a `HBoxContainer` to display a row of hearts. The below image shows the component used in three different places: 1) The cat's health bar, 2) The boombox's health bar, and 3) The mouse's health bar.
+In its node tree, it most notably contains a `HBoxContainer` to display a row of hearts. The below image shows the component used in three different places: 1) The cat's health bar, 2) The boombox's health bar, and 3) The mouse's health bar.
 
 ![Health Bar example](/catnap_components/healthbar_examples.jpg)
 
