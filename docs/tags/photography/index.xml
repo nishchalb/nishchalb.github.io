@@ -6,48 +6,35 @@
     <description>Recent content in photography on Nishchal Bhandari</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Mar 2024 16:57:11 -0500</lastBuildDate><atom:link href="https://nishchalb.github.io/tags/photography/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Mar 2024 16:57:11 -0500</lastBuildDate>
+    <atom:link href="https://nishchalb.github.io/tags/photography/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Darktable: Painting With Light (or dodging and burning)</title>
       <link>https://nishchalb.github.io/posts/dt_dodge_burn/</link>
       <pubDate>Tue, 19 Mar 2024 16:57:11 -0500</pubDate>
-      
       <guid>https://nishchalb.github.io/posts/dt_dodge_burn/</guid>
-      <description>The above image is alright, but it has a big issue: the water, which should be the main subject, does not stand out. Instead, the diffuse lighting of the image draws attention to the sky and rocks. How can we draw more focus to the waterfall?
-One technique we can use is &amp;ldquo;dodging and burning&amp;rdquo;, where we make selective tonal adjustments to parts of our image. In this post, I will show one such technique for doing this in darktable which I call &amp;ldquo;painting with light&amp;rdquo;.</description>
+      <description>The above image is alright, but it has a big issue: the water, which should be the main subject, does not stand out. Instead, the diffuse lighting of the image draws attention to the sky and rocks. How can we draw more focus to the waterfall?&#xA;One technique we can use is &amp;ldquo;dodging and burning&amp;rdquo;, where we make selective tonal adjustments to parts of our image. In this post, I will show one such technique for doing this in darktable which I call &amp;ldquo;painting with light&amp;rdquo;.</description>
     </item>
-    
     <item>
       <title>Darktable: Pastel Style</title>
       <link>https://nishchalb.github.io/posts/dt_pastel/</link>
       <pubDate>Fri, 09 Feb 2024 21:23:30 -0600</pubDate>
-      
       <guid>https://nishchalb.github.io/posts/dt_pastel/</guid>
-      <description>Pastel colors are a useful tool to have in your photography toolkit. Editing images with this style can help you take advantage of bright harsh light, lack of shadows, and colorful elements.
-What is a pastel color? Wikipedia says they have &amp;ldquo;high value and low saturation&amp;rdquo;. With paint, you can achieve them by &amp;ldquo;mixing white&amp;rdquo; with your standard colors. But how can we do this in darktable?
-To understand how we can accomplish this, its helpful to look at the diagrams in the darktable manual on color dimensions.</description>
+      <description>Pastel colors are a useful tool to have in your photography toolkit. Editing images with this style can help you take advantage of bright harsh light, lack of shadows, and colorful elements.&#xA;What is a pastel color? Wikipedia says they have &amp;ldquo;high value and low saturation&amp;rdquo;. With paint, you can achieve them by &amp;ldquo;mixing white&amp;rdquo; with your standard colors. But how can we do this in darktable?&#xA;To understand how we can accomplish this, its helpful to look at the diagrams in the darktable manual on color dimensions.</description>
     </item>
-    
     <item>
       <title>Darktable: Emulate Film Halation</title>
       <link>https://nishchalb.github.io/posts/dt_halation/</link>
       <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://nishchalb.github.io/posts/dt_halation/</guid>
-      <description>I recently came across an article about the halation effect in film (check out that article if you are interested in a description of the effect). I wanted to emulate the effect using darktable, and thankfully the Diffuse or Sharpen module that was released in darktable 3.8 makes this pretty easy.
-The method I will describe below is heavily based on one by one of the authors of the module.</description>
+      <description>I recently came across an article about the halation effect in film (check out that article if you are interested in a description of the effect). I wanted to emulate the effect using darktable, and thankfully the Diffuse or Sharpen module that was released in darktable 3.8 makes this pretty easy.&#xA;The method I will describe below is heavily based on one by one of the authors of the module.</description>
     </item>
-    
     <item>
       <title>Darktable: Recreate this look #1</title>
       <link>https://nishchalb.github.io/posts/dt-recreate1/</link>
       <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://nishchalb.github.io/posts/dt-recreate1/</guid>
-      <description>A while ago, someone asked online how to recreate the look of sanghan. Here is my attempt at showing how to do this using darktable 3.6.
-Here is the end product of the edit. I found this image on Signature Edits
-Here is our starting point. Notice that the conditions are similar to the images we are using as inspiration. It&amp;rsquo;s a lot easier to achieve a look when your lighting conditions are close.</description>
+      <description>A while ago, someone asked online how to recreate the look of sanghan. Here is my attempt at showing how to do this using darktable 3.6.&#xA;Here is the end product of the edit. I found this image on Signature Edits&#xA;Here is our starting point. Notice that the conditions are similar to the images we are using as inspiration. It&amp;rsquo;s a lot easier to achieve a look when your lighting conditions are close.</description>
     </item>
-    
   </channel>
 </rss>

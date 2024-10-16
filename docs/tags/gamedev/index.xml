@@ -6,27 +6,28 @@
     <description>Recent content in gamedev on Nishchal Bhandari</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 May 2024 12:40:46 -0500</lastBuildDate><atom:link href="https://nishchalb.github.io/tags/gamedev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Oct 2024 17:29:48 -0500</lastBuildDate>
+    <atom:link href="https://nishchalb.github.io/tags/gamedev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Break it up! Improving Your Godot Code Using Components</title>
+      <link>https://nishchalb.github.io/posts/catnap_components/</link>
+      <pubDate>Mon, 14 Oct 2024 17:29:48 -0500</pubDate>
+      <guid>https://nishchalb.github.io/posts/catnap_components/</guid>
+      <description>As your Godot project grows, it&amp;rsquo;s incredibly important to keep your code and node structure organized to avoid it from resembling a particularly notorious kind of pasta. The Godot best practices recommends having scenes that are singularly focused and loosely coupled. How can we achieve that in practice? In this article, I will explain what is often called the Component pattern and go through some real-world examples from my recently released game Twinkle Stardust&amp;rsquo;s Catnap Chaos to demonstrate how you can use it.</description>
+    </item>
     <item>
       <title>Procedural Eyebrow Shader in Godot</title>
       <link>https://nishchalb.github.io/posts/eyebrow_shader/</link>
       <pubDate>Sat, 25 May 2024 12:40:46 -0500</pubDate>
-      
       <guid>https://nishchalb.github.io/posts/eyebrow_shader/</guid>
-      <description>Shaders can be a mysterious topic for game developers not yet familiar with them. And seeing some of the wild things people can create with them (for example, on Shadertoy), they can even be ominous. It&amp;rsquo;s a whole new language and framework you have to learn in addition to Godot!
-In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for TriEdge Hack to help those who are learning about shaders but aren&amp;rsquo;t sure of the process of creating one from scratch.</description>
+      <description>Shaders can be a mysterious topic for game developers not yet familiar with them. And seeing some of the wild things people can create with them (for example, on Shadertoy), they can even be ominous. It&amp;rsquo;s a whole new language and framework you have to learn in addition to Godot!&#xA;In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for TriEdge Hack to help those who are learning about shaders but aren&amp;rsquo;t sure of the process of creating one from scratch.</description>
     </item>
-    
     <item>
       <title>Building Better Movement in Godot</title>
       <link>https://nishchalb.github.io/posts/godot_building_better_movement/</link>
       <pubDate>Wed, 28 Feb 2024 21:18:17 -0600</pubDate>
-      
       <guid>https://nishchalb.github.io/posts/godot_building_better_movement/</guid>
-      <description>How do you create a responsive character controller? What does responsive even mean for this? What&amp;rsquo;s wrong with using standard physics equation for this? This blog post will cover these questions and how you how to build responsive movement in Godot.
-A lot of this post is inspired by great resources that you should also check out:
-Math for Game Programmers: Building a Better Jump Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations Game Feel, by Steve Swink Note that this post will demonstrate using Godot 3.</description>
+      <description>How do you create a responsive character controller? What does responsive even mean for this? What&amp;rsquo;s wrong with using standard physics equation for this? This blog post will cover these questions and how you how to build responsive movement in Godot.&#xA;A lot of this post is inspired by great resources that you should also check out:&#xA;Math for Game Programmers: Building a Better Jump Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations Game Feel, by Steve Swink Note that this post will demonstrate using Godot 3.</description>
     </item>
-    
   </channel>
 </rss>
