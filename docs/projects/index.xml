@@ -4,7 +4,7 @@
     <title>Projects on Nishchal Bhandari</title>
     <link>https://nishchalb.github.io/projects/</link>
     <description>Recent content in Projects on Nishchal Bhandari</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 13 Jan 2024 12:10:53 -0600</lastBuildDate>
     <atom:link href="https://nishchalb.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
@@ -13,28 +13,28 @@
       <link>https://nishchalb.github.io/projects/imgditto/</link>
       <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
       <guid>https://nishchalb.github.io/projects/imgditto/</guid>
-      <description>Project Page&#xA;Concept img-ditto is a small python script with a command line interface that allows you to transfer the color style from one image to another. It works by using the histogram matching technique on the channels of an image. Typically the technique is used to equalize the intensity of an image to improve contrast, but I&amp;rsquo;ve found that the method works decently well for color transfer as well.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/imgditto-header.jpg&#34; alt=&#34;&#34;&gt;&#xA;&lt;a href=&#34;https://github.com/nishchalb/img-ditto&#34;&gt;Project Page&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;concept&#34;&gt;Concept&lt;/h1&gt;&#xA;&lt;p&gt;img-ditto is a small python script with a command line interface that allows you to transfer the color style from&#xA;one image to another. It works by using the histogram matching technique on the channels of an image. Typically the&#xA;technique is used to equalize the intensity of an image to improve contrast, but I&amp;rsquo;ve found that the method works&#xA;decently well for color transfer as well. This implementation work well when the &amp;ldquo;to&amp;rdquo; and &amp;ldquo;from&amp;rdquo; images are similar in&#xA;content (both images are of a city, forest, etc.). The best transfers were typically in the LAB colorspace, but the&#xA;program lets you choose other colorspaces as well.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Plane-Based Depth Image Completion</title>
       <link>https://nishchalb.github.io/projects/depth_completion/</link>
       <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
       <guid>https://nishchalb.github.io/projects/depth_completion/</guid>
-      <description>Abstract The Kinect has encountered widespread use in the areas of 3D mapping and computer vision thanks to its low cost, portability, and depth sensing capability. Unfortunately, its depth sensor has a maximum range of eight meters, and past four meters it tends to be very noisy. This work presents an approach to augment the Kinect with the ability to estimate the data that is missing from its sensors, providing a more complete picture of what is present in a given scene.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/depthmodel.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;&#xA;&lt;p&gt;The Kinect has encountered widespread use in the areas of 3D mapping and computer vision thanks to its low cost,&#xA;portability, and depth sensing capability. Unfortunately, its depth sensor has a maximum range of eight meters,&#xA;and past four meters it tends to be very noisy. This work presents an approach to augment the Kinect with the ability&#xA;to estimate the data that is missing from its sensors, providing a more complete picture of what is present in a given&#xA;scene. In contrast to much of what has been done, our work takes an approach more suited to the three-dimensional&#xA;structure of the world rather than relying on image processing techniques. We develop a model that utilizes image position, existing&#xA;depth, color, and surface normal measurements and derive an algorithm that can estimate missing data in a depth image using&#xA;only sensor data as input. Our results show that the generated estimates have a root mean square error of about 25 centimeters.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Secret Wizard Corporation</title>
       <link>https://nishchalb.github.io/projects/swc/</link>
       <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
       <guid>https://nishchalb.github.io/projects/swc/</guid>
-      <description>Project Page&#xA;Concept Secret Wizard Corporation is a small prototype game designed and created in two weeks by Nishchal Bhandari, Isaac Rosado, Pravina Saratunga, and Rachel Thornton for the MIT class CMS.611/6.073 Creating Video Games. The game is designed as a flow puzzle game with the addition of magical powers to help when players get stuck. To be successful, players must balance their actions between traditional pipe rotations and magical abilities.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/wizard.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://nishchalb.github.io/secret-wizard-corporation/&#34;&gt;Project Page&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;concept&#34;&gt;Concept&lt;/h1&gt;&#xA;&lt;p&gt;Secret Wizard Corporation is a small prototype game designed and created in two weeks by Nishchal Bhandari, Isaac Rosado, Pravina&#xA;Saratunga, and Rachel Thornton for the MIT class CMS.611/6.073 Creating Video Games. The game is designed as a flow puzzle&#xA;game with the addition of magical powers to help when players get stuck. To be successful, players must balance their&#xA;actions between traditional pipe rotations and magical abilities. The goal for this project was to develop a semi-polished game prototype&#xA;that featured an interesting trade-off as a mechanic.&lt;/p&gt;</description>
     </item>
     <item>
       <title>walltime</title>
       <link>https://nishchalb.github.io/projects/walltime/</link>
       <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
       <guid>https://nishchalb.github.io/projects/walltime/</guid>
-      <description>Project Page&#xA;Concept walltime is a small python script with a command line interface that can set the desktop wallpaper to an image based on the time of day. walltime chooses an image semi-randomly that fits with the time of day. walltime works by mapping the 24 hour clock to a color gradient (currently the viridis colormap in Matplotlib), and then finding images who&amp;rsquo;s mean color is most similar to the color corresponding to the current time of day.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/walltime-header.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/nishchalb/walltime&#34;&gt;Project Page&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;concept&#34;&gt;Concept&lt;/h1&gt;&#xA;&lt;p&gt;walltime is a small python script with a command line interface that can set the desktop wallpaper to an image&#xA;based on the time of day. walltime chooses an image semi-randomly that fits with the time of day. walltime works&#xA;by mapping the 24 hour clock to a color gradient (currently the viridis colormap in Matplotlib), and then finding images&#xA;who&amp;rsquo;s mean color is most similar to the color corresponding to the current time of day. Color distance is measured&#xA;in the LAB colorspace, where Euclidean distance closely matches perceptual differences in color.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

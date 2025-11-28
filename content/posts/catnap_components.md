@@ -6,7 +6,6 @@ tags: ["godot", "gamedev"]
 type: "post"
 image: "/catnap_components/healthbar_examples.jpg"
 katex: true
-markup: 'mmark'
 comments:
   host: mastodon.gamedev.place
   username: nish

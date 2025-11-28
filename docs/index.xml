@@ -4,7 +4,7 @@
     <title>Nishchal Bhandari</title>
     <link>https://nishchalb.github.io/</link>
     <description>Recent content on Nishchal Bhandari</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 14 Oct 2024 17:29:48 -0500</lastBuildDate>
     <atom:link href="https://nishchalb.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -13,77 +13,77 @@
       <link>https://nishchalb.github.io/posts/catnap_components/</link>
       <pubDate>Mon, 14 Oct 2024 17:29:48 -0500</pubDate>
       <guid>https://nishchalb.github.io/posts/catnap_components/</guid>
-      <description>As your Godot project grows, it&amp;rsquo;s incredibly important to keep your code and node structure organized to avoid it from resembling a particularly notorious kind of pasta. The Godot best practices recommends having scenes that are singularly focused and loosely coupled. How can we achieve that in practice? In this article, I will explain what is often called the Component pattern and go through some real-world examples from my recently released game Twinkle Stardust&amp;rsquo;s Catnap Chaos to demonstrate how you can use it.</description>
+      <description>&lt;p&gt;As your Godot project grows, it&amp;rsquo;s incredibly important to keep your code and node structure organized to avoid it from resembling&#xA;a particularly notorious kind of pasta. The &lt;a href=&#34;https://docs.godotengine.org/en/stable/tutorials/best_practices/scene_organization.html&#34;&gt;Godot best practices&lt;/a&gt; recommends having scenes that are singularly focused and loosely coupled. How can we achieve that in practice? In this article, I will explain&#xA;what is often called the &lt;em&gt;Component pattern&lt;/em&gt; and go through some real-world examples from my recently released game&#xA;&lt;a href=&#34;https://store.steampowered.com/app/3050120/Twinkle_Stardusts_Catnap_Chaos&#34;&gt;Twinkle Stardust&amp;rsquo;s Catnap Chaos&lt;/a&gt; to demonstrate how you can use it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Procedural Eyebrow Shader in Godot</title>
       <link>https://nishchalb.github.io/posts/eyebrow_shader/</link>
       <pubDate>Sat, 25 May 2024 12:40:46 -0500</pubDate>
       <guid>https://nishchalb.github.io/posts/eyebrow_shader/</guid>
-      <description>Shaders can be a mysterious topic for game developers not yet familiar with them. And seeing some of the wild things people can create with them (for example, on Shadertoy), they can even be ominous. It&amp;rsquo;s a whole new language and framework you have to learn in addition to Godot!&#xA;In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for TriEdge Hack to help those who are learning about shaders but aren&amp;rsquo;t sure of the process of creating one from scratch.</description>
+      <description>&lt;p&gt;Shaders can be a mysterious topic for game developers not yet familiar with them. And seeing some of the wild things people can create&#xA;with them (for example, on &lt;a href=&#34;https://www.shadertoy.com/&#34;&gt;Shadertoy&lt;/a&gt;), they can even be ominous. It&amp;rsquo;s a whole new language and framework you have to learn in addition to Godot!&lt;/p&gt;&#xA;&lt;p&gt;In this tutorial, I want to breakdown the process I used to create a simple procedural eyebrow shader for &lt;a href=&#34;https://nishb.itch.io/triedge-hack&#34;&gt;TriEdge Hack&lt;/a&gt; to help those who are learning about shaders but aren&amp;rsquo;t sure of the process of creating one from scratch. Specifically, we will look at how to do this in a Godot 2D environment.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Darktable: Painting With Light (or dodging and burning)</title>
       <link>https://nishchalb.github.io/posts/dt_dodge_burn/</link>
       <pubDate>Tue, 19 Mar 2024 16:57:11 -0500</pubDate>
       <guid>https://nishchalb.github.io/posts/dt_dodge_burn/</guid>
-      <description>The above image is alright, but it has a big issue: the water, which should be the main subject, does not stand out. Instead, the diffuse lighting of the image draws attention to the sky and rocks. How can we draw more focus to the waterfall?&#xA;One technique we can use is &amp;ldquo;dodging and burning&amp;rdquo;, where we make selective tonal adjustments to parts of our image. In this post, I will show one such technique for doing this in darktable which I call &amp;ldquo;painting with light&amp;rdquo;.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt_dodge_burn/start.jpg&#34; alt=&#34;Starting point image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;The above image is alright, but it has a big issue: the water, which should be the main subject, does not stand out. Instead, the diffuse lighting of the image draws attention to the sky and rocks. How can we draw more focus to the waterfall?&lt;/p&gt;&#xA;&lt;p&gt;One technique we can use is &amp;ldquo;dodging and burning&amp;rdquo;, where we make selective tonal adjustments to parts of our image. In this post, I will show&#xA;one such technique for doing this in darktable which I call &amp;ldquo;painting with light&amp;rdquo;. We will use darktable&amp;rsquo;s scene referred workflow and powerful masking features to improve the focus of our image.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Building Better Movement in Godot</title>
       <link>https://nishchalb.github.io/posts/godot_building_better_movement/</link>
       <pubDate>Wed, 28 Feb 2024 21:18:17 -0600</pubDate>
       <guid>https://nishchalb.github.io/posts/godot_building_better_movement/</guid>
-      <description>How do you create a responsive character controller? What does responsive even mean for this? What&amp;rsquo;s wrong with using standard physics equation for this? This blog post will cover these questions and how you how to build responsive movement in Godot.&#xA;A lot of this post is inspired by great resources that you should also check out:&#xA;Math for Game Programmers: Building a Better Jump Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations Game Feel, by Steve Swink Note that this post will demonstrate using Godot 3.</description>
+      <description>&lt;p&gt;How do you create a responsive character controller? What does responsive even mean for this? What&amp;rsquo;s wrong with using&#xA;standard physics equation for this? This blog post will cover these questions and how you how to build responsive movement in Godot.&lt;/p&gt;&#xA;&lt;p&gt;A lot of this post is inspired by great resources that you should also check out:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=hG9SzQxaCm8&#34;&gt;Math for Game Programmers: Building a Better Jump&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=mr5xkf6zSzk&#34;&gt;Math for Game Programmers: Fast and Funky 1D Nonlinear Transformations&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://www.game-feel.com/&#34;&gt;Game Feel, by Steve Swink&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;em&gt;Note that this post will demonstrate using Godot 3.4. KinematicBody2D has been renamed CharacterBody2D in Godot 4.&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Darktable: Pastel Style</title>
       <link>https://nishchalb.github.io/posts/dt_pastel/</link>
       <pubDate>Fri, 09 Feb 2024 21:23:30 -0600</pubDate>
       <guid>https://nishchalb.github.io/posts/dt_pastel/</guid>
-      <description>Pastel colors are a useful tool to have in your photography toolkit. Editing images with this style can help you take advantage of bright harsh light, lack of shadows, and colorful elements.&#xA;What is a pastel color? Wikipedia says they have &amp;ldquo;high value and low saturation&amp;rdquo;. With paint, you can achieve them by &amp;ldquo;mixing white&amp;rdquo; with your standard colors. But how can we do this in darktable?&#xA;To understand how we can accomplish this, its helpful to look at the diagrams in the darktable manual on color dimensions.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt-pastel/main.jpg&#34; alt=&#34;An photo of mine with pastel colors&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Pastel colors are a useful tool to have in your photography toolkit. Editing images with this style can help you take advantage of&#xA;bright harsh light, lack of shadows, and colorful elements.&lt;/p&gt;&#xA;&lt;p&gt;What is a pastel color? Wikipedia says they have &amp;ldquo;high value and low saturation&amp;rdquo;. With paint, you can achieve them by &amp;ldquo;mixing white&amp;rdquo; with your standard colors. But how can we do this in darktable?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Darktable: Emulate Film Halation</title>
       <link>https://nishchalb.github.io/posts/dt_halation/</link>
       <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://nishchalb.github.io/posts/dt_halation/</guid>
-      <description>I recently came across an article about the halation effect in film (check out that article if you are interested in a description of the effect). I wanted to emulate the effect using darktable, and thankfully the Diffuse or Sharpen module that was released in darktable 3.8 makes this pretty easy.&#xA;The method I will describe below is heavily based on one by one of the authors of the module.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt-halation/h1.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;I recently came across an article about the &lt;a href=&#34;https://blog.dehancer.com/articles/halation/&#34;&gt;halation effect&lt;/a&gt; in film (check out that article if you are interested in a description of the effect). I wanted to&#xA;emulate the effect using darktable, and thankfully the &lt;code&gt;Diffuse or Sharpen&lt;/code&gt; module that was released in darktable 3.8 makes this pretty easy.&lt;/p&gt;&#xA;&lt;p&gt;The method I will describe below is heavily based on one by &lt;a href=&#34;https://youtu.be/fG0gD96TSdc?si=vNQ9R8p-_Ku3WZhJ&amp;amp;t=2480&#34;&gt;one of the authors of the module&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I use the &lt;code&gt;IMG_9759&lt;/code&gt; image from &lt;a href=&#34;https://www.signatureedits.com/free-raw-photos/&#34;&gt;Signature Edits&lt;/a&gt; to demonstrate.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Darktable: Recreate this look #1</title>
       <link>https://nishchalb.github.io/posts/dt-recreate1/</link>
       <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://nishchalb.github.io/posts/dt-recreate1/</guid>
-      <description>A while ago, someone asked online how to recreate the look of sanghan. Here is my attempt at showing how to do this using darktable 3.6.&#xA;Here is the end product of the edit. I found this image on Signature Edits&#xA;Here is our starting point. Notice that the conditions are similar to the images we are using as inspiration. It&amp;rsquo;s a lot easier to achieve a look when your lighting conditions are close.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt1/Dqo7xDO.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;A while ago, someone asked online how to recreate the look of &lt;a href=&#34;https://www.instagram.com/sanghan_&#34;&gt;sanghan&lt;/a&gt;.&#xA;Here is my attempt at showing how to do this using darktable 3.6.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt1/pB2L52j.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Here is the end product of the edit. I found this image on &lt;a href=&#34;https://www.signatureedits.com/free-raw-photos/&#34;&gt;Signature Edits&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt1/EBhTfXv.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Here is our starting point. Notice that the conditions are similar to the images we are using as inspiration. It&amp;rsquo;s a lot easier to achieve a look when your lighting conditions are close.&lt;/p&gt;</description>
     </item>
     <item>
       <title>img-ditto</title>
       <link>https://nishchalb.github.io/projects/imgditto/</link>
       <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
       <guid>https://nishchalb.github.io/projects/imgditto/</guid>
-      <description>Project Page&#xA;Concept img-ditto is a small python script with a command line interface that allows you to transfer the color style from one image to another. It works by using the histogram matching technique on the channels of an image. Typically the technique is used to equalize the intensity of an image to improve contrast, but I&amp;rsquo;ve found that the method works decently well for color transfer as well.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/imgditto-header.jpg&#34; alt=&#34;&#34;&gt;&#xA;&lt;a href=&#34;https://github.com/nishchalb/img-ditto&#34;&gt;Project Page&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;concept&#34;&gt;Concept&lt;/h1&gt;&#xA;&lt;p&gt;img-ditto is a small python script with a command line interface that allows you to transfer the color style from&#xA;one image to another. It works by using the histogram matching technique on the channels of an image. Typically the&#xA;technique is used to equalize the intensity of an image to improve contrast, but I&amp;rsquo;ve found that the method works&#xA;decently well for color transfer as well. This implementation work well when the &amp;ldquo;to&amp;rdquo; and &amp;ldquo;from&amp;rdquo; images are similar in&#xA;content (both images are of a city, forest, etc.). The best transfers were typically in the LAB colorspace, but the&#xA;program lets you choose other colorspaces as well.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Plane-Based Depth Image Completion</title>
       <link>https://nishchalb.github.io/projects/depth_completion/</link>
       <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
       <guid>https://nishchalb.github.io/projects/depth_completion/</guid>
-      <description>Abstract The Kinect has encountered widespread use in the areas of 3D mapping and computer vision thanks to its low cost, portability, and depth sensing capability. Unfortunately, its depth sensor has a maximum range of eight meters, and past four meters it tends to be very noisy. This work presents an approach to augment the Kinect with the ability to estimate the data that is missing from its sensors, providing a more complete picture of what is present in a given scene.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/depthmodel.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;abstract&#34;&gt;Abstract&lt;/h1&gt;&#xA;&lt;p&gt;The Kinect has encountered widespread use in the areas of 3D mapping and computer vision thanks to its low cost,&#xA;portability, and depth sensing capability. Unfortunately, its depth sensor has a maximum range of eight meters,&#xA;and past four meters it tends to be very noisy. This work presents an approach to augment the Kinect with the ability&#xA;to estimate the data that is missing from its sensors, providing a more complete picture of what is present in a given&#xA;scene. In contrast to much of what has been done, our work takes an approach more suited to the three-dimensional&#xA;structure of the world rather than relying on image processing techniques. We develop a model that utilizes image position, existing&#xA;depth, color, and surface normal measurements and derive an algorithm that can estimate missing data in a depth image using&#xA;only sensor data as input. Our results show that the generated estimates have a root mean square error of about 25 centimeters.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Secret Wizard Corporation</title>
       <link>https://nishchalb.github.io/projects/swc/</link>
       <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
       <guid>https://nishchalb.github.io/projects/swc/</guid>
-      <description>Project Page&#xA;Concept Secret Wizard Corporation is a small prototype game designed and created in two weeks by Nishchal Bhandari, Isaac Rosado, Pravina Saratunga, and Rachel Thornton for the MIT class CMS.611/6.073 Creating Video Games. The game is designed as a flow puzzle game with the addition of magical powers to help when players get stuck. To be successful, players must balance their actions between traditional pipe rotations and magical abilities.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/wizard.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://nishchalb.github.io/secret-wizard-corporation/&#34;&gt;Project Page&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;concept&#34;&gt;Concept&lt;/h1&gt;&#xA;&lt;p&gt;Secret Wizard Corporation is a small prototype game designed and created in two weeks by Nishchal Bhandari, Isaac Rosado, Pravina&#xA;Saratunga, and Rachel Thornton for the MIT class CMS.611/6.073 Creating Video Games. The game is designed as a flow puzzle&#xA;game with the addition of magical powers to help when players get stuck. To be successful, players must balance their&#xA;actions between traditional pipe rotations and magical abilities. The goal for this project was to develop a semi-polished game prototype&#xA;that featured an interesting trade-off as a mechanic.&lt;/p&gt;</description>
     </item>
     <item>
       <title>walltime</title>
       <link>https://nishchalb.github.io/projects/walltime/</link>
       <pubDate>Sat, 13 Jan 2024 12:10:53 -0600</pubDate>
       <guid>https://nishchalb.github.io/projects/walltime/</guid>
-      <description>Project Page&#xA;Concept walltime is a small python script with a command line interface that can set the desktop wallpaper to an image based on the time of day. walltime chooses an image semi-randomly that fits with the time of day. walltime works by mapping the 24 hour clock to a color gradient (currently the viridis colormap in Matplotlib), and then finding images who&amp;rsquo;s mean color is most similar to the color corresponding to the current time of day.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/walltime-header.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/nishchalb/walltime&#34;&gt;Project Page&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;concept&#34;&gt;Concept&lt;/h1&gt;&#xA;&lt;p&gt;walltime is a small python script with a command line interface that can set the desktop wallpaper to an image&#xA;based on the time of day. walltime chooses an image semi-randomly that fits with the time of day. walltime works&#xA;by mapping the 24 hour clock to a color gradient (currently the viridis colormap in Matplotlib), and then finding images&#xA;who&amp;rsquo;s mean color is most similar to the color corresponding to the current time of day. Color distance is measured&#xA;in the LAB colorspace, where Euclidean distance closely matches perceptual differences in color.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

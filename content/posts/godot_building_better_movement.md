@@ -6,7 +6,6 @@ tags: ["godot", "gamedev"]
 type: "post"
 image: "/godot_movement/adsr_good.png"
 katex: true
-markup: 'mmark'
 comments:
   host: mastodon.gamedev.place
   username: nish

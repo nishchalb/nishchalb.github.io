@@ -7,7 +7,6 @@ type: "post"
 showTableOfContents: true
 image: "/eyebrow_shader/eyebrow_all.png"
 katex: true
-markup: 'mmark'
 comments:
   host: mastodon.gamedev.place
   username: nish

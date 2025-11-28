@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>The Design of Catnap Chaos</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='blog, gokarna, hugo, godot, gamedev'>
+
+    <meta property="og:url" content="http://localhost:1313/posts/catnap_design/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Design of Catnap Chaos">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="http://localhost:1313/catnap_design/walking.png">
+    <meta property="og:image:secure_url" content="http://localhost:1313/catnap_design/walking.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Design of Catnap Chaos">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="http://localhost:1313/posts/catnap_design/">
+    <meta property="twitter:url" content="http://localhost:1313/posts/catnap_design/">
+    <meta name="twitter:image" content="http://localhost:1313/catnap_design/walking.png">
+
+    
+    <link rel="canonical" href="http://localhost:1313/posts/catnap_design/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.a036ebe92c17ea3f0c07761c2135b82bec6f37c8efb7f49ddad1f28c22fc4769.js" integrity="sha256-oDbr6SwX6j8MB3YcITW4K&#43;xvN8jvt/Sd2tHyjCL8R2k="></script>
+    // css
+    <link rel="stylesheet" href="/css/custom.css">
+    <a rel="me" href="https://mastodon.gamedev.place/@nish"></a>
+
+    
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://localhost:1313/">
+                <img src='/linkedin.jpeg' alt="avatar">
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://localhost:1313/">Nishchal Bhandari</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/" aria-label="" ><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/posts/" aria-label="" ><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/projects/" aria-label="" ><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/tags/" aria-label="" ><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/nishchalb" aria-label="github" ><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/index.xml" aria-label="rss" ><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/" ><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/posts/" ><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/projects/" ><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/tags/" ><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/nishchalb" ><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/index.xml" ><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>The Design of Catnap Chaos</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle"></small>
+	
+
+	
+          <p class="post-date">
+              
+
+              November 26, 2025
+
+              
+          </p>
+	
+
+        <ul class="post-tags">
+          
+           
+             <li class="post-tag"><a href="http://localhost:1313/tags/godot">godot</a></li>
+           
+         
+           
+             <li class="post-tag"><a href="http://localhost:1313/tags/gamedev">gamedev</a></li>
+           
+         
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>I released my first game, <a href="https://store.steampowered.com/app/3050120/Twinkle_Stardusts_Catnap_Chaos/">Twinkle Stardust&rsquo;s Catnap Chaos</a>, just over a year ago. I love reading how other devs approach building their designs, so I wanted to document the design ideas behind my game here. Part of the reason it&rsquo;s taken me so long to write this up is that I&rsquo;ve been trying to think of a through line or major takeaway for this post, but in reality
+I don&rsquo;t think there is one. Designing games is challenging, and a lot of the devil is in the details, especially if you are trying to avoid established genres and mechanics.</p>
+<p><img src="/catnap_design/bounce.gif" alt="Bounce"></p>
+<h1 id="overview">Overview</h1>
+<p>A brief description of Catnap Chaos, for those who haven&rsquo;t played the game.
+In Catnap Chaos, you defend your cute sleeping cat from bothersome mice. If the mice
+disturb your cat too many times, the game ends. When you hit a mouse, it bounces around the screen
+and can hit other mice, causing even more mice to spawn. Clearing mice earns you currency to spend
+on powerups between waves of mice. There is a small but diverse set of potential powerups:</p>
+<ul>
+<li>Alarm Clock: Spawn an extra mouse if player picks it up, or adds a bounce to a mouse if it does</li>
+<li>Spider Web: Slow things down in an area</li>
+<li>Fan: Pushes mice and other powerups away</li>
+<li>Cheese: Moves around and attracts mice</li>
+<li>Robocat: Helps the player guard their cat</li>
+<li>Boombox: Spawns music notes that give the player money and a speed boost</li>
+<li>Magnifying glass: Makes the player or mice bigger</li>
+<li>Plate of fish: Needed to win the game</li>
+</ul>
+<p>The initial goal of the game is to purchase 4 plates of fish.</p>
+<p><img src="/catnap_design/buy.gif" alt="Buy"></p>
+<h2 id="initial-design">Initial design</h2>
+<p>One of my favorite GDC talks of all time is <a href="https://www.raphkoster.com/games/presentations/practical-creativity/">Koster&rsquo;s Practical Creativity</a>.
+With Catnap Chaos, I wanted to create something unique but with a small scope. At the time, I was really impressed by the simplicity of Vampire
+Survivors, where you just move around while your character automatically attacks things, so I decided to start with a similar constraint to foster
+some creativity: <strong>movement only, but no player health and no bullets/weapons.</strong></p>
+<p>I had already decided the game was going to be about preventing your sleeping cat from disturbed, so moving health away from the player
+and onto your cat was a simple decision. Without weapons like Vampire Survivors, bumping into enemies to get rid of them also seemed straightforward.</p>
+<p>Inspired by games like Dome Keeper, I also wanted some kind of two-phase gameplay. It seemed like a nice way to add some variety and pacing
+without blowing up the scope. And there&rsquo;s also the benefit of it being pretty simple to design around: things you do in one phase should effect
+the other. In Catnap Chaos, the two phases are:</p>
+<ul>
+<li>Wave defense / money acquisition</li>
+<li>Shopping / Powerup placement</li>
+</ul>
+<p>The initial version played a lot differently than the final design. Each wave had a set time, and mice did not bounce around.
+The goal for the player was to bump as many mice as possible to earn money for powerups, some of which extended the time of the wave.
+I hoped the game would play like a mix of strategy and chaos, but during playtests it became clear that the amount of chaos completely
+overshadowed any strategic aspects.</p>
+<h2 id="fixing-things">Fixing things</h2>
+<p>Maybe there is a small takeaway here: in order to fix your design, you need to identify its problems. And in order to find problems,
+you need to have <em>intent</em>. I knew I wanted players to have room for strategic thinking, so I made a few major changes to the game.</p>
+<ul>
+<li>Removed the wave timer. The time pressure took away space for planning.</li>
+<li>Changed the mice spawning mechanics. Rather than constantly spawning mice throughout the wave, only a few mice spawn at the start.</li>
+</ul>
+<p>Up until this point, the game actually still did not have one of its eventual core mechanics: bouncing mice off walls. The idea for it came initially from the animation of hitting a mouse: it would fly away into the distance. Eventually I thought, what if you could
+hit mice with other mice? That led to being able to also bounce mice off of walls, which felt perfect for the game. Instead of bumping into mice
+whenever possible, it forced the player to line up tricky shots bouncing the mice off of walls.</p>
+<h1 id="tidbits">Tidbits</h1>
+<p>Some scattered thoughts on design elements I liked and didn&rsquo;t like.</p>
+<h2 id="mice-are-danger-and-currency">Mice are danger and currency</h2>
+<p>Making mice the primary threat and source of currency created some great dynamics. The player wants to spawn more mice to earn enough money to purchase fish,
+so they want to aim their shots carefully initially. If they are doing well, the number of mice on screen increases, forcing the player to track threats to their
+cat more carefully (at the cost of aiming good bounces). The difficulty naturally ramps up as the player is doing well, but it doesn&rsquo;t feel unfair since the player
+is being rewarded.</p>
+<h3 id="chonky-mouse">Chonky mouse</h3>
+<p>As the player purchases fish, some bigger mice start to appear. These are a more discrete step up in difficulty: they need to be bumped against a wall to get rid of them.
+This forces players away from the center of the room, where it&rsquo;s easiest to defend their cat. To compensate for the increased difficulty, the big mice are worth more money.</p>
+<h2 id="economy">Economy</h2>
+<p>During initial prototyping, I realized that I didn&rsquo;t want the player to be able to hoard wealth to beat the game. I thought of implementing some kind of wealth tax mechanic,
+but instead I landed on the player losing all unused money after the shopping phase. I felt it created an interesting challenge that many players might not be used to:
+how can you increase your per wave income, given that you can&rsquo;t carry over money between waves?</p>
+<h3 id="the-mouse-bounce-math">The mouse bounce math</h3>
+<p>I&rsquo;m proud of how the balance behind mouse spawning turned out. Mice in the game can bounce 0 or more times, depending on how many heart icons they have under them.
+If the player bumps a mouse directly, they earn a flat amount of money. But, if they bump a mouse into another mouse, an extra mouse spawns! And, each time they
+bounce a mouse off a wall before bumping it into another mouse, they increase the amount of mice spawned. So, for example:</p>
+<ul>
+<li>Player bumps a mouse into nothing → $2 gain, and no new mice</li>
+<li>Player bumps a mouse into another → $4 gain, and one new mouse.</li>
+<li>Player bumps a mouse off a wall into another → $4 gain, and two new mice.</li>
+</ul>
+<p>The math for this gets pretty interesting. Each wave always starts with 6 mice that are able to bounce once. Any further mice they spawn don&rsquo;t have any bounces.
+If the player simply bumps them all separately, they only get <!-- raw HTML omitted -->$<!-- raw HTML omitted -->12.
+But, if they hit one of them directly into the other 5, they would get <!-- raw HTML omitted -->$<!-- raw HTML omitted -->12 and have 5 extra mice to repeat the process. If they
+continue this process, they would end up with <!-- raw HTML omitted -->$<!-- raw HTML omitted -->12 + <!-- raw HTML omitted -->$<!-- raw HTML omitted -->10 + <!-- raw HTML omitted -->$<!-- raw HTML omitted -->8 + <!-- raw HTML omitted -->$<!-- raw HTML omitted -->6 + <!-- raw HTML omitted -->$<!-- raw HTML omitted -->4 + <!-- raw HTML omitted -->$<!-- raw HTML omitted -->2 = <!-- raw HTML omitted -->$<!-- raw HTML omitted -->42.</p>
+<p>Or consider a more likely scenario: if they are aiming to hit one mouse into just one other one. Starting with 6 mice,</p>
+<ul>
+<li>they gain $4 and have 5 left</li>
+<li>they gain $4 and have 4 left</li>
+<li>they gain $4 and have 3 left</li>
+<li>&hellip;</li>
+<li>they end up with $22 (4 * 5 + 2 for the last mouse)</li>
+</ul>
+<p>Things get complicated if you also consider bouncing the mice off walls, but these scenarios were enough for me to balance powerup costs.</p>
+<h3 id="powerups">Powerups</h3>
+<p>I priced the cheapest powerup precisely at <!-- raw HTML omitted -->$<!-- raw HTML omitted -->14, which requires getting rid of 7 mice. I was careful to do this because I wanted to indicate to the player that they should
+be trying to bump mice into other mice (in case they did not read the tutorial text). I really enjoy when a game gives players this kind of subtle feedback, so it felt good
+to be able to include it in Catnap Chaos. If a player only ever hits mice directly, they will get <!-- raw HTML omitted -->$<!-- raw HTML omitted -->12 each wave, be unable to purchase anything, and will lose that money each wave,
+ending up in the same unchanging economic situation if they don&rsquo;t change their approach.</p>
+<p>But, if the player earns enough to purchase a powerup, a positive feedback loop begins. Each powerup is brought into the game by an additional mouse, increasing the player&rsquo;s
+earning potential in a wave. At first, a player might only be able to purchase a single powerup each wave. But, if they use that powerup and additional mouse well, it can snowball
+into two powerups each wave, and then three, and so on.</p>
+<p>The goal powerup, a plate of fish, costs $70. Above average mouse bumping alone can&rsquo;t get the player there, and relying on the slow buildup from powerups can take a while.</p>
+<p><img src="/catnap_design/powerup.gif" alt="Powerup"></p>
+<h3 id="timing-powerup-usage">Timing powerup usage</h3>
+<p>Because unspent money is not carried over between rounds, powerups also serve a powerful secondary purpose: a value store that can be carried between rounds. If a player
+is shooting to get $70+ in a single round, they might decide to accumulate powerups over a few rounds but not use them until they think they have enough to reach a high dollar amount that wave.
+This leads to some interesting dynamics during the round: the player wants to avoid picking up powerups (and also prevent mice from using them) while still trying
+to maximize their earnings and defend their cat.</p>
+<h2 id="two-paths-to-victory">Two paths to victory</h2>
+<p>After the bounce mechanic was added, I knew I wanted to support two general playstyles: accurate bouncing and clever powerup use.</p>
+<p>By bouncing mice off walls (or other objects in the game!), an accurate player can get enough extra mice to sustain the wave as long as they maintain their accuracy.
+This kind of playstyle doesn&rsquo;t need to be too clever with the powerups, and can just enjoy skillfully bouncing mice around.</p>
+<p>Clever powerup use was more challenging to design for, and I&rsquo;ll expand on that more in the <code>Emergence</code> section. In general, powerups were designed as mixes of 1) Economy, 2) Defense, and 3) Utility.
+The fan powerup, for example, can be used both defensively to push mice away from your cat, or as a utility to position and combine powerups between waves.</p>
+<h2 id="endgame-challenge">Endgame challenge</h2>
+<p>Once the primary challenge (buying 4 plates of fish) is complete, the game enters an &ldquo;endgame&rdquo; mode. The intent for this subsequent mode was to require a certain level of bounce mastery
+of the player. Rather than waves starting with six mice, the waves now only start with two. However, these two mice have two hearts, so each can bounce twice. If the player
+bumps one into the other with no bounces, the most money they can get in a wave is $6. The player needs to be able to perform some trick bounce shots on these fast-moving mice
+to get the final item, a trophy, to beat the game.</p>
+<p>The inclusion of this extra challenge felt like nice texture on top of the base game loop. The player is still performing the same actions, but the context feels just different
+enough.</p>
+<h2 id="donuts">Donuts</h2>
+<p><a href="https://www.raphkoster.com/?s=topology">Many of Koster&rsquo;s posts mention topology</a>, so I definitely had it in mind even in laying out this small single rectangular level.
+Having your cat on a solid couch in the middle of the level ends up making the rectangle into a sort of donut, making it a little more time consuming for a player to go from one
+side of the room to the other. To further add wrinkles, most items and enemies don&rsquo;t collide with the center couch, which can lead to some tense moments when a mouse is closing
+in and the player needs to move quickly to reach it in time.</p>
+<p>If a mouse has hearts, it can also bounce off the couch as if it was a wall. This can sometimes work in the player&rsquo;s favor, as it can shorten the total path of a trick shot.
+But it can also act as a hindrance when the player needs to bump a mouse on the other side of the couch.</p>
+<h2 id="the-ai-trap">The AI Trap</h2>
+<p>I&rsquo;m sure this advice is common, but it was nice to experience it firsthand: complicated AI isn&rsquo;t always better.
+In the first version of Catnap Chaos, I implemented a tunable mixture of behaviors for mice that resulted in
+each mouse moving with pretty unique behavior. But the result was that movement became essentially unpredictable
+to the player, so all mice ended up being treated the same anyway. And worse, I didn&rsquo;t want players to have to spend
+time observing each mouse to be able to play strategically.</p>
+<p>So I simplified things. Rather than a complicated mixture of behaviors, I chose three simple behaviors and assigned each
+to a separate mouse visual:</p>
+<ul>
+<li>Gray mouse: move in straight lines</li>
+<li>Brown mouse: stand still, or follow nearby mice</li>
+<li>Thief mouse: move towards powerups to steal them, then run away to the edge of the room</li>
+</ul>
+<p>The predictable movement makes it possible for the player to make plans, and the distinct behavior makes the player
+treat each kind of mouse differently.</p>
+<h2 id="thief-mouse-balancing-loop">Thief mouse balancing loop</h2>
+<p>The thief mouse turned out to be a great balancing tool. Instead of spawning the mice completely at random, I chose to scale
+the number of thief mice depending on the number of powerups present. It can be tough for the player to keep track of things
+when there are too many powerups in the room, so thief acts as a resource sink. They also introduce another risk-reward dynamic:
+does the player risk saving one of their powerups from being stolen but leaving their cat undefended?</p>
+<h2 id="emergence">Emergence</h2>
+<p>Emergence can sometimes feel like a loaded word in game design. In my case, I just wanted to design things in a way
+that allowed for scenarios I didn&rsquo;t intend. The main way I attempted to do this was by taking inspiration from arguably the
+most emergent genre: <a href="https://azhdarchid.com/the-sao-paulo-interpretation-of-immersive-sims/">the immersive sim</a>.</p>
+<p>Now clearly I wasn&rsquo;t trying to make a game like Deus Ex, and I didn&rsquo;t have water puddles or electricity, but I wanted to have some
+consistency in rules that could create emergent gameplay.</p>
+<p>One way I tried to do this was via powerups: all powerups can interact with the player, mice, or any of the &ldquo;moving&rdquo; powerups (Robocat, cheese).
+The magnifying glass will make any unit that picks it up bigger, not just the player. The spider web will slow down every unit, even bumped mice
+flying through the air. The powerups that can be picked up (fan, boombox, spider web) can be picked up by any unit.</p>
+<p>Another way I tried to do this was via the bouncing mice. They mainly bounce of walls, but they can also bounce off of powerups
+that are on the field, as well as the player. I didn&rsquo;t intend for it, but this led to a nice core strategy that I discovered in testing:
+the player can try to &ldquo;ping-pong&rdquo; the bouncing mice between them and powerups to rack up a large combo spawn.</p>
+<p><img src="/catnap_design/walking.png" alt="image"></p>
+<h2 id="powerup-combos">Powerup Combos</h2>
+<p>I think my biggest design mistake was in how I designed powerup combos. When two powerups touch, they fuse to create
+a powered up version that combines their effects. But, the combined effect is bespoke, so I had to design and implement
+features for many pairs of powerup combinations. And, because the combined effects could be pretty esoteric, I had to
+create an encyclopedia feature to the game to explain these various powerup combos.</p>
+<h2 id="tutorial">Tutorial</h2>
+<p>A lot of players don&rsquo;t like to read tutorial text. I knew this, because I&rsquo;m one of those players. But, I did it anyway.
+I struggled to think of effective ways to indicate the bounce ↔ spawn mechanics, but it seemed difficult to describe even in plain
+English. If I had more time, I would&rsquo;ve liked to include some text-free tutorial that forced the player to understand this rule.</p>
+<h1 id="the-end">The End</h1>
+<p>Well, I think that&rsquo;s it! I would love to see more design retrospectives on games, so I will try to write more of these.
+If you enjoyed reading this, I&rsquo;d definitely encourage you to give Catnap Chaos a try. I still play a few rounds from time to time,
+and I&rsquo;m really proud of the game. Carefully aiming bounces is a fun core mechanic, and coming up with strategies I didn&rsquo;t design is
+super satisfying.</p>
+
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+        <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="scrollToTop()" title="Go to top">
+    
+    <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+</svg>
+<script>
+    let backToTopButton = document.getElementById("btt-button");
+
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+</script>
+
+    
+    
+</div>
+
+
+<section id="comments" class="comments">
+  <h2>Comments</h2>
+  <p>With an account on the Fediverse or Mastodon, you can respond to this <a href="https://mastodon.gamedev.place/@nish/112027620869024106">post</a>. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. Known non-private replies are displayed below.</p>
+
+  <p id="mastodon-comments-list"><button id="load-comment">Load comments</button></p>
+  <div id="comments-wrapper">
+    <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="https://mastodon.gamedev.place/@nish/112027620869024106">the original post</a> on Mastodon.</p></noscript>
+  </div>
+  <noscript>You need JavaScript to view the comments.</noscript>
+  <script src="/purify.min.js"></script>
+  <script type="text/javascript">
+    function escapeHtml(unsafe) {
+      return unsafe
+           .replace(/&/g, "&amp;")
+           .replace(/</g, "&lt;")
+           .replace(/>/g, "&gt;")
+           .replace(/"/g, "&quot;")
+           .replace(/'/g, "&#039;");
+    }
+    function emojify(input, emojis) {
+      let output = input;
+
+      emojis.forEach(emoji => {
+        let picture = document.createElement("picture");
+
+        let source = document.createElement("source");
+        source.setAttribute("srcset", escapeHtml(emoji.url));
+        source.setAttribute("media", "(prefers-reduced-motion: no-preference)");
+
+        let img = document.createElement("img");
+        img.className = "emoji";
+        img.setAttribute("src", escapeHtml(emoji.static_url));
+        img.setAttribute("alt", `:${ emoji.shortcode }:`);
+        img.setAttribute("title", `:${ emoji.shortcode }:`);
+
+        picture.appendChild(source);
+        picture.appendChild(img);
+
+        output = output.replace(`:${ emoji.shortcode }:`, picture.outerHTML);
+      });
+
+      return output;
+    }
+
+    function loadComments() {
+      let commentsWrapper = document.getElementById("comments-wrapper");
+      document.getElementById("load-comment").innerHTML = "Loading";
+      fetch('https://mastodon.gamedev.place/api/v1/statuses/112027620869024106/context')
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          let descendants = data['descendants'];
+          if(
+            descendants &&
+            Array.isArray(descendants) &&
+            descendants.length > 0
+          ) {
+            commentsWrapper.innerHTML = "";
+
+            descendants.forEach(function(status) {
+                console.log(descendants)
+              if( status.account.display_name.length > 0 ) {
+                status.account.display_name = escapeHtml(status.account.display_name);
+                status.account.display_name = emojify(status.account.display_name, status.account.emojis);
+              } else {
+                status.account.display_name = status.account.username;
+              };
+
+              let instance = "";
+              if( status.account.acct.includes("@") ) {
+                instance = status.account.acct.split("@")[1];
+              } else {
+                instance = "mastodon.gamedev.place";
+              }
+
+              const isReply = status.in_reply_to_id !== "112027620869024106";
+
+              let op = false;
+              if( status.account.acct == "nish" ) {
+                op = true;
+              }
+
+              status.content = emojify(status.content, status.emojis);
+
+              let avatarSource = document.createElement("source");
+              avatarSource.setAttribute("srcset", escapeHtml(status.account.avatar));
+              avatarSource.setAttribute("media", "(prefers-reduced-motion: no-preference)");
+
+              let avatarImg = document.createElement("img");
+              avatarImg.className = "mastodon-avatar";
+              avatarImg.setAttribute("src", escapeHtml(status.account.avatar_static));
+              avatarImg.setAttribute("alt", `@${ status.account.username }@${ instance } avatar`);
+              avatarImg.setAttribute("width", "60px");
+
+              let avatarPicture = document.createElement("picture");
+              avatarPicture.appendChild(avatarSource);
+              avatarPicture.appendChild(avatarImg);
+
+              let avatar = document.createElement("a");
+              avatar.className = "avatar-link";
+              avatar.setAttribute("href", status.account.url);
+              avatar.setAttribute("rel", "external nofollow");
+              avatar.setAttribute("title", `View profile at @${ status.account.username }@${ instance }`);
+              avatar.appendChild(avatarPicture);
+
+              let instanceBadge = document.createElement("a");
+              instanceBadge.className = "instance";
+              instanceBadge.setAttribute("href", status.account.url);
+              instanceBadge.setAttribute("title", `@${ status.account.username }@${ instance }`);
+              instanceBadge.setAttribute("rel", "external nofollow");
+              instanceBadge.textContent = instance;
+
+              let display = document.createElement("span");
+              display.className = "display";
+              display.setAttribute("itemprop", "author");
+              display.setAttribute("itemtype", "http://schema.org/Person");
+              display.innerHTML = status.account.display_name;
+
+              let header = document.createElement("header");
+              header.className = "author";
+              header.appendChild(display);
+              header.appendChild(instanceBadge);
+
+              let permalink = document.createElement("a");
+              permalink.setAttribute("href", status.url);
+              permalink.setAttribute("itemprop", "url");
+              permalink.setAttribute("title", `View comment at ${ instance }`);
+              permalink.setAttribute("rel", "external nofollow");
+              permalink.textContent = new Date( status.created_at ).toLocaleString('en-US', {
+                dateStyle: "long",
+                timeStyle: "short",
+              });
+
+              let timestamp = document.createElement("time");
+              timestamp.setAttribute("datetime", status.created_at);
+              timestamp.appendChild(permalink);
+
+              let main = document.createElement("main");
+              main.setAttribute("itemprop", "text");
+              main.innerHTML = status.content;
+
+              let interactions = document.createElement("footer");
+              if(status.favourites_count > 0) {
+                let faves = document.createElement("a");
+                faves.className = "faves";
+                faves.setAttribute("href", `${ status.url }/favourites`);
+                faves.setAttribute("title", `Favorites from ${ instance }`);
+                faves.textContent = status.favourites_count;
+
+                interactions.appendChild(faves);
+              }
+
+              let comment = document.createElement("article");
+              comment.id = `comment-${ status.id }`;
+              comment.className = isReply ? "mastodon-comment comment-reply" : "mastodon-comment";
+              comment.setAttribute("itemprop", "comment");
+              comment.setAttribute("itemtype", "http://schema.org/Comment");
+              comment.appendChild(avatar);
+              comment.appendChild(header);
+              comment.appendChild(timestamp);
+              comment.appendChild(main);
+              comment.appendChild(interactions);
+
+              if(op === true) {
+                comment.classList.add("op");
+
+                avatar.classList.add("op");
+                avatar.setAttribute(
+                  "title",
+                  "Blog post author; " + avatar.getAttribute("title")
+                );
+
+                instanceBadge.classList.add("op");
+                instanceBadge.setAttribute(
+                  "title",
+                  "Blog post author: " + instanceBadge.getAttribute("title")
+                );
+              }
+
+              commentsWrapper.innerHTML += DOMPurify.sanitize(comment.outerHTML);
+            });
+          }
+        });
+      }
+      document.getElementById("load-comment").addEventListener("click", loadComments);
+  </script>
+</section>
+
+
+    
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+
+    
+
+    
+
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

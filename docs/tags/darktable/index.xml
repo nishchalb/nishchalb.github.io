@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>darktable on Nishchal Bhandari</title>
+    <title>Darktable on Nishchal Bhandari</title>
     <link>https://nishchalb.github.io/tags/darktable/</link>
-    <description>Recent content in darktable on Nishchal Bhandari</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Darktable on Nishchal Bhandari</description>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 19 Mar 2024 16:57:11 -0500</lastBuildDate>
     <atom:link href="https://nishchalb.github.io/tags/darktable/index.xml" rel="self" type="application/rss+xml" />
@@ -13,28 +13,28 @@
       <link>https://nishchalb.github.io/posts/dt_dodge_burn/</link>
       <pubDate>Tue, 19 Mar 2024 16:57:11 -0500</pubDate>
       <guid>https://nishchalb.github.io/posts/dt_dodge_burn/</guid>
-      <description>The above image is alright, but it has a big issue: the water, which should be the main subject, does not stand out. Instead, the diffuse lighting of the image draws attention to the sky and rocks. How can we draw more focus to the waterfall?&#xA;One technique we can use is &amp;ldquo;dodging and burning&amp;rdquo;, where we make selective tonal adjustments to parts of our image. In this post, I will show one such technique for doing this in darktable which I call &amp;ldquo;painting with light&amp;rdquo;.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt_dodge_burn/start.jpg&#34; alt=&#34;Starting point image&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;The above image is alright, but it has a big issue: the water, which should be the main subject, does not stand out. Instead, the diffuse lighting of the image draws attention to the sky and rocks. How can we draw more focus to the waterfall?&lt;/p&gt;&#xA;&lt;p&gt;One technique we can use is &amp;ldquo;dodging and burning&amp;rdquo;, where we make selective tonal adjustments to parts of our image. In this post, I will show&#xA;one such technique for doing this in darktable which I call &amp;ldquo;painting with light&amp;rdquo;. We will use darktable&amp;rsquo;s scene referred workflow and powerful masking features to improve the focus of our image.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Darktable: Pastel Style</title>
       <link>https://nishchalb.github.io/posts/dt_pastel/</link>
       <pubDate>Fri, 09 Feb 2024 21:23:30 -0600</pubDate>
       <guid>https://nishchalb.github.io/posts/dt_pastel/</guid>
-      <description>Pastel colors are a useful tool to have in your photography toolkit. Editing images with this style can help you take advantage of bright harsh light, lack of shadows, and colorful elements.&#xA;What is a pastel color? Wikipedia says they have &amp;ldquo;high value and low saturation&amp;rdquo;. With paint, you can achieve them by &amp;ldquo;mixing white&amp;rdquo; with your standard colors. But how can we do this in darktable?&#xA;To understand how we can accomplish this, its helpful to look at the diagrams in the darktable manual on color dimensions.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt-pastel/main.jpg&#34; alt=&#34;An photo of mine with pastel colors&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Pastel colors are a useful tool to have in your photography toolkit. Editing images with this style can help you take advantage of&#xA;bright harsh light, lack of shadows, and colorful elements.&lt;/p&gt;&#xA;&lt;p&gt;What is a pastel color? Wikipedia says they have &amp;ldquo;high value and low saturation&amp;rdquo;. With paint, you can achieve them by &amp;ldquo;mixing white&amp;rdquo; with your standard colors. But how can we do this in darktable?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Darktable: Emulate Film Halation</title>
       <link>https://nishchalb.github.io/posts/dt_halation/</link>
       <pubDate>Tue, 30 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://nishchalb.github.io/posts/dt_halation/</guid>
-      <description>I recently came across an article about the halation effect in film (check out that article if you are interested in a description of the effect). I wanted to emulate the effect using darktable, and thankfully the Diffuse or Sharpen module that was released in darktable 3.8 makes this pretty easy.&#xA;The method I will describe below is heavily based on one by one of the authors of the module.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt-halation/h1.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;I recently came across an article about the &lt;a href=&#34;https://blog.dehancer.com/articles/halation/&#34;&gt;halation effect&lt;/a&gt; in film (check out that article if you are interested in a description of the effect). I wanted to&#xA;emulate the effect using darktable, and thankfully the &lt;code&gt;Diffuse or Sharpen&lt;/code&gt; module that was released in darktable 3.8 makes this pretty easy.&lt;/p&gt;&#xA;&lt;p&gt;The method I will describe below is heavily based on one by &lt;a href=&#34;https://youtu.be/fG0gD96TSdc?si=vNQ9R8p-_Ku3WZhJ&amp;amp;t=2480&#34;&gt;one of the authors of the module&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I use the &lt;code&gt;IMG_9759&lt;/code&gt; image from &lt;a href=&#34;https://www.signatureedits.com/free-raw-photos/&#34;&gt;Signature Edits&lt;/a&gt; to demonstrate.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Darktable: Recreate this look #1</title>
       <link>https://nishchalb.github.io/posts/dt-recreate1/</link>
       <pubDate>Sun, 14 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://nishchalb.github.io/posts/dt-recreate1/</guid>
-      <description>A while ago, someone asked online how to recreate the look of sanghan. Here is my attempt at showing how to do this using darktable 3.6.&#xA;Here is the end product of the edit. I found this image on Signature Edits&#xA;Here is our starting point. Notice that the conditions are similar to the images we are using as inspiration. It&amp;rsquo;s a lot easier to achieve a look when your lighting conditions are close.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt1/Dqo7xDO.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;A while ago, someone asked online how to recreate the look of &lt;a href=&#34;https://www.instagram.com/sanghan_&#34;&gt;sanghan&lt;/a&gt;.&#xA;Here is my attempt at showing how to do this using darktable 3.6.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt1/pB2L52j.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Here is the end product of the edit. I found this image on &lt;a href=&#34;https://www.signatureedits.com/free-raw-photos/&#34;&gt;Signature Edits&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://nishchalb.github.io/dt1/EBhTfXv.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Here is our starting point. Notice that the conditions are similar to the images we are using as inspiration. It&amp;rsquo;s a lot easier to achieve a look when your lighting conditions are close.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
