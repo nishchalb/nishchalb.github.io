@@ -6,8 +6,15 @@
     <description>Recent content on Nishchal Bhandari</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 14 Oct 2024 17:29:48 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 28 Nov 2025 15:15:12 -0600</lastBuildDate>
     <atom:link href="https://nishchalb.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Design of Catnap Chaos</title>
+      <link>https://nishchalb.github.io/posts/catnap_design/</link>
+      <pubDate>Fri, 28 Nov 2025 15:15:12 -0600</pubDate>
+      <guid>https://nishchalb.github.io/posts/catnap_design/</guid>
+      <description>&lt;p&gt;I released my first game, &lt;a href=&#34;https://store.steampowered.com/app/3050120/Twinkle_Stardusts_Catnap_Chaos/&#34;&gt;Twinkle Stardust&amp;rsquo;s Catnap Chaos&lt;/a&gt;, just over a year ago. I love reading how other devs approach building their designs, so I wanted to document the design ideas behind my game here. Part of the reason it&amp;rsquo;s taken me so long to write this up is that I&amp;rsquo;ve been trying to think of a through line or major takeaway for this post, but in reality&#xA;I don&amp;rsquo;t think there is one. Designing games is challenging, and a lot of the devil is in the details, especially if you are trying to avoid established genres and mechanics.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Break it up! Improving Your Godot Code Using Components</title>
       <link>https://nishchalb.github.io/posts/catnap_components/</link>
